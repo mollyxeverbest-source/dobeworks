@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Dobeworks Market</title>
+    <title>RFL PRO | Dobeworks</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         * {
@@ -14,370 +14,676 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
+            background: #0a0a0f;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            color: #ffffff;
         }
 
-        /* iOS стиль контейнера */
         .container {
             max-width: 400px;
-            width: 100%;
-            text-align: center;
-            animation: fadeIn 0.4s ease-out;
+            margin: 0 auto;
+            padding: 20px 16px 80px;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Приветствие над аватаркой */
-        .greeting {
-            font-size: 28px;
-            font-weight: 600;
-            color: #1c1c1e;
-            margin-bottom: 30px;
-            letter-spacing: -0.3px;
-        }
-
-        /* Круглая аватарка */
-        .avatar-wrapper {
+        /* Шапка */
+        .header {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #8b8bff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .settings-icon {
+            font-size: 22px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* Профиль */
+        .profile-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border-radius: 24px;
+            padding: 20px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
 
         .avatar {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #6c5ce7 0%, #a363d9 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            transition: transform 0.2s ease;
-        }
-
-        .avatar:active {
-            transform: scale(0.95);
-        }
-
-        .avatar-initials {
-            font-size: 52px;
-            font-weight: 500;
-            color: white;
-            text-transform: uppercase;
-        }
-
-        /* Имя пользователя */
-        .username {
-            font-size: 22px;
+            font-size: 28px;
             font-weight: 600;
-            color: #1c1c1e;
-            margin-bottom: 40px;
-            letter-spacing: -0.2px;
+            color: white;
         }
 
-        /* iOS стиль кнопки */
-        .ios-button {
-            background-color: #007aff;
-            border: none;
-            border-radius: 14px;
+        .profile-details {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 16px;
+        }
+
+        .stat-item {
+            font-size: 13px;
+            color: #8b8b9e;
+        }
+
+        .stat-value {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Баланс */
+        .balance-card {
+            background: #111118;
+            border-radius: 20px;
             padding: 16px 20px;
-            font-size: 17px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .balance-label {
+            font-size: 14px;
+            color: #8b8b9e;
+        }
+
+        .balance-value {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .buy-btn {
+            background: linear-gradient(135deg, #6c5ce7 0%, #a363d9 100%);
+            border: none;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Навигация вкладок */
+        .tabs {
+            display: flex;
+            background: #111118;
+            border-radius: 30px;
+            padding: 4px;
+            margin-bottom: 24px;
+            gap: 4px;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #8b8b9e;
+            cursor: pointer;
+            border-radius: 26px;
+            transition: all 0.2s;
+        }
+
+        .tab.active {
+            background: #6c5ce7;
+            color: white;
+        }
+
+        /* Контент вкладок */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Карточки предметов */
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-link {
+            font-size: 13px;
+            color: #6c5ce7;
+        }
+
+        .items-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .item-card {
+            background: #111118;
+            border-radius: 16px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .item-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #2a2a3e 0%, #1a1a2e 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .item-quality {
+            font-size: 12px;
+            color: #8b8b9e;
+        }
+
+        .item-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        /* Кейсы */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .case-card {
+            background: #111118;
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .case-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .case-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .case-stats {
+            font-size: 11px;
+            color: #8b8b9e;
+            margin-bottom: 12px;
+        }
+
+        .case-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        /* Приглашения */
+        .invite-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .invite-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 16px 0;
+        }
+
+        .invite-btn {
+            background: linear-gradient(135deg, #6c5ce7 0%, #a363d9 100%);
+            border: none;
+            border-radius: 30px;
+            padding: 14px;
+            font-size: 16px;
             font-weight: 600;
             color: white;
             width: 100%;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
         }
 
-        .ios-button:active {
-            background-color: #0051a8;
-            transform: scale(0.97);
-            box-shadow: 0 1px 4px rgba(0, 122, 255, 0.2);
-        }
-
-        /* Стиль главного меню */
-        .main-menu {
-            display: none;
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .menu-header {
-            margin-bottom: 32px;
-        }
-
-        .menu-header .avatar {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 16px;
-        }
-
-        .menu-header .avatar-initials {
-            font-size: 36px;
-        }
-
-        .menu-header .username {
-            font-size: 20px;
+        .friend-item {
+            background: #111118;
+            border-radius: 16px;
+            padding: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 8px;
         }
 
-        .menu-title {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            color: #1c1c1e;
-            letter-spacing: -0.5px;
-        }
-
-        .menu-grid {
+        /* Нижнее меню */
+        .bottom-menu {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 400px;
+            margin: 0 auto;
+            background: #111118;
             display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 30px;
+            justify-content: space-around;
+            padding: 12px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
         }
 
         .menu-item {
-            background-color: #f2f2f7;
-            border-radius: 14px;
-            padding: 16px 20px;
-            font-size: 17px;
-            font-weight: 500;
-            color: #007aff;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-align: left;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 4px;
+            font-size: 12px;
+            color: #8b8b9e;
+            cursor: pointer;
+            transition: color 0.2s;
         }
 
-        .menu-item:active {
-            background-color: #e5e5ea;
-            transform: scale(0.98);
+        .menu-item.active {
+            color: #6c5ce7;
         }
 
         .menu-icon {
-            font-size: 24px;
-            width: 32px;
-        }
-
-        .menu-text {
-            flex: 1;
-        }
-
-        .back-button {
-            background-color: #8e8e93;
-            margin-top: 20px;
-        }
-
-        .back-button:active {
-            background-color: #6c6c70;
-        }
-
-        /* Темная тема iOS */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #000000;
-            }
-            .greeting, .username, .menu-title, .menu-header .username {
-                color: #ffffff;
-            }
-            .menu-item {
-                background-color: #1c1c1e;
-                color: #0a84ff;
-            }
-            .menu-item:active {
-                background-color: #2c2c2e;
-            }
-            .avatar {
-                background: linear-gradient(135deg, #0a84ff 0%, #5e5ce0 100%);
-            }
+            font-size: 22px;
         }
     </style>
 </head>
 <body>
-    <div class="container" id="app">
-        <!-- Начальный экран -->
-        <div id="startScreen">
-            <div class="greeting" id="greetingText">Здравствуйте, </div>
-            <div class="avatar-wrapper">
-                <div class="avatar">
-                    <div class="avatar-initials" id="avatarInitials"></div>
-                </div>
-            </div>
-            <div class="username" id="usernameDisplay"></div>
-            <button class="ios-button" id="startBtn">Начать</button>
+    <div class="container">
+        <!-- Шапка -->
+        <div class="header">
+            <div class="logo">RFL PRO</div>
+            <div class="settings-icon">⚙️</div>
         </div>
 
-        <!-- Главное меню -->
-        <div id="mainMenu" class="main-menu">
-            <div class="menu-header">
-                <div class="avatar-wrapper">
-                    <div class="avatar">
-                        <div class="avatar-initials" id="menuAvatarInitials"></div>
+        <!-- Профиль -->
+        <div class="profile-card">
+            <div class="avatar" id="avatarInitials">М</div>
+            <div class="profile-details">
+                <div class="profile-name" id="profileName">МОЛЛИ</div>
+                <div class="profile-stats">
+                    <div class="stat-item">📦 <span class="stat-value">0</span> предметов</div>
+                    <div class="stat-item">👥 <span class="stat-value">6</span> друзей</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Баланс -->
+        <div class="balance-card">
+            <div>
+                <div class="balance-label">Твой баланс</div>
+                <div class="balance-value" id="balanceValue">225</div>
+            </div>
+            <button class="buy-btn" id="buyCrystalsBtn">💎 Купить кристаллы</button>
+        </div>
+
+        <!-- Вкладки -->
+        <div class="tabs">
+            <div class="tab active" data-tab="cases">Кейсы</div>
+            <div class="tab" data-tab="market">Маркет</div>
+            <div class="tab" data-tab="friends">Друзья</div>
+            <div class="tab" data-tab="profile">Профиль</div>
+        </div>
+
+        <!-- Кейсы -->
+        <div class="tab-content active" id="tab-cases">
+            <div class="section-title">
+                <span>🎁 Популярные кейсы</span>
+                <span class="section-link">Показать все →</span>
+            </div>
+            <div class="cases-grid">
+                <div class="case-card" data-case="Rusty Case" data-price="500">
+                    <div class="case-icon">📦</div>
+                    <div class="case-name">Rusty Case</div>
+                    <div class="case-stats">29.1M открытий</div>
+                    <div class="case-price">🟢 500</div>
+                </div>
+                <div class="case-card" data-case="Graffiti Case" data-price="2500">
+                    <div class="case-icon">🎨</div>
+                    <div class="case-name">Graffiti Case</div>
+                    <div class="case-stats">304K открытий</div>
+                    <div class="case-price">🟢 2.5K</div>
+                </div>
+                <div class="case-card" data-case="Tactical Case" data-price="3000">
+                    <div class="case-icon">🔫</div>
+                    <div class="case-name">Tactical Case</div>
+                    <div class="case-stats">5M открытий</div>
+                    <div class="case-price">🟢 3K</div>
+                </div>
+                <div class="case-card" data-case="Spectrum Case" data-price="4000">
+                    <div class="case-icon">🌈</div>
+                    <div class="case-name">Spectrum Case</div>
+                    <div class="case-stats">535K открытий</div>
+                    <div class="case-price">🟢 4K</div>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <span>🔥 Хиты продаж</span>
+                <span class="section-link">Топ самых продаваемых →</span>
+            </div>
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-icon">🔫</div>
+                    <div class="item-info">
+                        <div class="item-name">M4A1-S | Mud-Spec</div>
+                        <div class="item-quality">Field-Tested</div>
                     </div>
+                    <div class="item-price">3 188</div>
                 </div>
-                <div class="username" id="menuUsername"></div>
-            </div>
-            <div class="menu-title">🏠 Главное меню</div>
-            <div class="menu-grid">
-                <div class="menu-item" data-action="market">
-                    <span class="menu-icon">🛍️</span>
-                    <span class="menu-text">Маркет скинов</span>
+                <div class="item-card">
+                    <div class="item-icon">🎯</div>
+                    <div class="item-info">
+                        <div class="item-name">StatTrak™ SSG 08 | Memorial</div>
+                        <div class="item-quality">Well-Worn</div>
+                    </div>
+                    <div class="item-price">2 873</div>
                 </div>
-                <div class="menu-item" data-action="inventory">
-                    <span class="menu-icon">📦</span>
-                    <span class="menu-text">Мои покупки</span>
-                </div>
-                <div class="menu-item" data-action="support">
-                    <span class="menu-icon">💬</span>
-                    <span class="menu-text">Поддержка</span>
-                </div>
-                <div class="menu-item" data-action="profile">
-                    <span class="menu-icon">👤</span>
-                    <span class="menu-text">Профиль</span>
+                <div class="item-card">
+                    <div class="item-icon">🐱</div>
+                    <div class="item-info">
+                        <div class="item-name">FAMAS | Meow 36</div>
+                        <div class="item-quality">Well-Worn</div>
+                    </div>
+                    <div class="item-price">1 990</div>
                 </div>
             </div>
-            <button class="ios-button back-button" id="backBtn">Выйти</button>
+        </div>
+
+        <!-- Маркет -->
+        <div class="tab-content" id="tab-market">
+            <div class="section-title">
+                <span>🛒 Маркет скинов</span>
+                <span class="section-link">Поиск по скинам...</span>
+            </div>
+            
+            <div class="section-title">
+                <span>💎 ВЫГОДНЫЕ</span>
+                <span class="section-link">Лучшие скины до 10$ →</span>
+            </div>
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-icon">🔪</div>
+                    <div class="item-info">
+                        <div class="item-name">Нож | Карамбит</div>
+                        <div class="item-quality">Factory New</div>
+                    </div>
+                    <div class="item-price">225</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-icon">🧤</div>
+                    <div class="item-info">
+                        <div class="item-name">Перчатки | Спорт</div>
+                        <div class="item-quality">Minimal Wear</div>
+                    </div>
+                    <div class="item-price">180</div>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <span>🎨 НОВАЯ КОЛЛЕКЦИЯ</span>
+                <span class="section-link">The Dead Hand →</span>
+            </div>
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-icon">💀</div>
+                    <div class="item-info">
+                        <div class="item-name">AK-47 | The Dead Hand</div>
+                        <div class="item-quality">Covert</div>
+                    </div>
+                    <div class="item-price">5 000</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Друзья / Приглашения -->
+        <div class="tab-content" id="tab-friends">
+            <div class="invite-card">
+                <div>👥 Приглашай друзей и получай кристаллы</div>
+                <div class="invite-stats">
+                    <div>🎁 <strong>6</strong> приглашений</div>
+                    <div>👤 <strong>2</strong> гостя</div>
+                </div>
+                <button class="invite-btn" id="inviteFriendBtn">✨ Пригласить друга +500 ✨</button>
+            </div>
+            
+            <div class="section-title">Недавно смотрел</div>
+            <div class="friend-item">
+                <span>⭐ Самокат</span>
+                <span>❤️ +500</span>
+            </div>
+            <div class="friend-item">
+                <span>🔥 arsee</span>
+                <span>+200</span>
+            </div>
+        </div>
+
+        <!-- Профиль -->
+        <div class="tab-content" id="tab-profile">
+            <div class="section-title">Мой профиль</div>
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-icon">📈</div>
+                    <div class="item-info">
+                        <div class="item-name">Апгрейд</div>
+                        <div class="item-quality">Повысь уровень</div>
+                    </div>
+                    <div class="item-price">→</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-icon">💰</div>
+                    <div class="item-info">
+                        <div class="item-name">Пополнить Steam</div>
+                        <div class="item-quality">Быстрое пополнение</div>
+                    </div>
+                    <div class="item-price">→</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-icon">🔗</div>
+                    <div class="item-info">
+                        <div class="item-name">Ссылка обмена</div>
+                        <div class="item-quality">Для трейдов</div>
+                    </div>
+                    <div class="item-price">→</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-icon">🌐</div>
+                    <div class="item-info">
+                        <div class="item-name">Сообщество RFL PRO</div>
+                        <div class="item-quality">Telegram чат</div>
+                    </div>
+                    <div class="item-price">→</div>
+                </div>
+                <div class="item-card">
+                    <div class="item-icon">🔧</div>
+                    <div class="item-info">
+                        <div class="item-name">Настройки</div>
+                        <div class="item-quality">Изменить профиль</div>
+                    </div>
+                    <div class="item-price">→</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Нижнее меню -->
+    <div class="bottom-menu">
+        <div class="menu-item" data-tab="cases">
+            <div class="menu-icon">📦</div>
+            <span>Кейсы</span>
+        </div>
+        <div class="menu-item" data-tab="market">
+            <div class="menu-icon">🛒</div>
+            <span>Маркет</span>
+        </div>
+        <div class="menu-item" data-tab="friends">
+            <div class="menu-icon">👥</div>
+            <span>Друзья</span>
+        </div>
+        <div class="menu-item" data-tab="profile">
+            <div class="menu-icon">👤</div>
+            <span>Профиль</span>
         </div>
     </div>
 
     <script>
-        // Инициализация Telegram WebApp
         const tg = window.Telegram.WebApp;
         tg.ready();
         tg.expand();
 
-        // Получаем данные пользователя
+        // Данные пользователя из Telegram
         let user = tg.initDataUnsafe?.user;
         if (!user || !user.id) {
-            // Тестовые данные для локальной разработки
-            user = {
-                first_name: "Алексей",
-                last_name: "",
-                username: "alexey",
-                id: 123456789,
-                photo_url: null
-            };
+            user = { first_name: "МОЛЛИ", last_name: "", id: 123456789 };
         }
-
-        const firstName = user.first_name || "Гость";
-        const lastName = user.last_name || "";
-        const fullName = `${firstName} ${lastName}`.trim();
-        const initials = firstName.charAt(0).toUpperCase();
-
-        // Элементы DOM
-        const startScreen = document.getElementById("startScreen");
-        const mainMenu = document.getElementById("mainMenu");
-        const greetingText = document.getElementById("greetingText");
-        const avatarInitials = document.getElementById("avatarInitials");
-        const usernameDisplay = document.getElementById("usernameDisplay");
-        const menuAvatarInitials = document.getElementById("menuAvatarInitials");
-        const menuUsername = document.getElementById("menuUsername");
-        const startBtn = document.getElementById("startBtn");
-        const backBtn = document.getElementById("backBtn");
-
-        // Заполняем данные
-        greetingText.textContent = `Здравствуйте, ${firstName}`;
-        usernameDisplay.textContent = fullName;
-        menuUsername.textContent = fullName;
-        avatarInitials.textContent = initials;
-        menuAvatarInitials.textContent = initials;
-
-        // Если есть фото, можно показать его (редко бывает)
-        if (user.photo_url) {
-            const avatarDivs = document.querySelectorAll('.avatar');
-            avatarDivs.forEach(div => {
-                div.innerHTML = `<img src="${user.photo_url}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+        
+        const firstName = user.first_name?.toUpperCase() || "МОЛЛИ";
+        const initial = firstName.charAt(0);
+        
+        // Устанавливаем аватарку и имя
+        document.getElementById("avatarInitials").textContent = initial;
+        document.getElementById("profileName").textContent = firstName;
+        
+        let balance = 225;
+        
+        // Функция обновления баланса
+        function updateBalance() {
+            document.getElementById("balanceValue").textContent = balance;
+        }
+        
+        // Переключение вкладок
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
             });
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+            
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tab[data-tab="${tabId}"]`).classList.add('active');
+            
+            document.querySelectorAll('.bottom-menu .menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`.bottom-menu .menu-item[data-tab="${tabId}"]`).classList.add('active');
         }
-
-        // Функции переключения экранов
-        function showMainMenu() {
-            startScreen.style.display = "none";
-            mainMenu.style.display = "block";
-            tg.sendData(JSON.stringify({ action: "menu_opened", user_id: user.id, user_name: firstName }));
-        }
-
-        function showStartScreen() {
-            startScreen.style.display = "block";
-            mainMenu.style.display = "none";
-        }
-
-        // Обработчик кнопки "Начать"
-        startBtn.addEventListener("click", () => {
-            showMainMenu();
+        
+        // Обработчики вкладок
+        document.querySelectorAll('.tab, .bottom-menu .menu-item').forEach(el => {
+            el.addEventListener('click', () => {
+                const tabId = el.dataset.tab;
+                if (tabId) switchTab(tabId);
+            });
         });
-
-        // Обработчик кнопки "Выйти"
-        backBtn.addEventListener("click", () => {
-            showStartScreen();
+        
+        // Покупка кристаллов
+        document.getElementById("buyCrystalsBtn").addEventListener("click", () => {
+            tg.sendData(JSON.stringify({ action: "buy_crystals", user_id: user.id }));
+            tg.showAlert("💎 Пополнение кристаллов\n\nСвяжитесь с @DobeworksSupport для оплаты.");
         });
-
-        // Обработчики пунктов меню
-        const menuItems = document.querySelectorAll('.menu-item');
-        menuItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const action = item.dataset.action;
-                const text = item.querySelector('.menu-text').textContent;
-                
-                // Отправляем данные в Telegram
-                tg.sendData(JSON.stringify({ 
-                    action: "menu_click", 
-                    menu_item: action,
-                    menu_text: text,
-                    user_id: user.id 
-                }));
-                
-                // Временные действия (замените на свои)
-                switch(action) {
-                    case 'market':
-                        tg.showAlert("🛍️ Маркет скинов\n\nСкоро здесь появится каталог скинов CS2 и Dota 2!");
-                        break;
-                    case 'inventory':
-                        tg.showAlert("📦 Мои покупки\n\nУ вас пока нет покупок.");
-                        break;
-                    case 'support':
-                        tg.showAlert("💬 Поддержка\n\nСвяжитесь с нами: @DobeworksSupport");
-                        break;
-                    case 'profile':
-                        tg.showAlert(`👤 Ваш профиль\n\nИмя: ${fullName}\nID: ${user.id}\n\nБаланс: 0 Stars`);
-                        break;
-                    default:
-                        tg.showAlert(`Вы выбрали: ${text}`);
+        
+        // Пригласить друга
+        document.getElementById("inviteFriendBtn")?.addEventListener("click", () => {
+            tg.sendData(JSON.stringify({ action: "invite_friend", user_id: user.id }));
+            tg.showAlert("👥 Пригласи друга!\n\nОтправь ему ссылку на бота и получи +500 кристаллов.");
+        });
+        
+        // Открытие кейсов
+        document.querySelectorAll('.case-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const caseName = card.dataset.case;
+                const price = parseInt(card.dataset.price);
+                if (balance >= price) {
+                    balance -= price;
+                    updateBalance();
+                    tg.showAlert(`🎉 Вы открыли кейс "${caseName}"!\n-${price} кристаллов`);
+                    tg.sendData(JSON.stringify({ action: "open_case", case: caseName, price: price }));
+                } else {
+                    tg.showAlert(`❌ Не хватает кристаллов!\nНужно: ${price}, у вас: ${balance}`);
                 }
             });
         });
-
-        // Настраиваем главную кнопку Telegram (для удобства)
-        tg.MainButton.setText("✨ Открыть меню");
-        tg.MainButton.onClick(() => {
-            if (startScreen.style.display !== "none") {
-                showMainMenu();
-            } else {
-                tg.showAlert("Вы уже в главном меню");
-            }
-        });
-        tg.MainButton.show();
-
-        // Сообщаем, что приложение загружено
-        tg.ready();
         
-        console.log("Приложение загружено, пользователь:", firstName);
+        // Покупка предметов из маркета
+        document.querySelectorAll('.item-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const name = card.querySelector('.item-name')?.textContent || "Предмет";
+                const price = parseInt(card.querySelector('.item-price')?.textContent?.replace(/\D/g, '') || "0");
+                if (price && balance >= price) {
+                    balance -= price;
+                    updateBalance();
+                    tg.showAlert(`✅ Вы купили "${name}" за ${price} кристаллов!\nОжидайте выдачу.`);
+                    tg.sendData(JSON.stringify({ action: "buy_item", item: name, price: price }));
+                } else if (price) {
+                    tg.showAlert(`❌ Не хватает кристаллов для "${name}"!`);
+                }
+            });
+        });
+        
+        tg.MainButton.hide();
+        
+        console.log("RFL PRO загружен, пользователь:", firstName);
     </script>
 </body>
 </html>
