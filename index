@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Dobeworks Market</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* iOS стиль контейнера */
+        .container {
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Приветствие над аватаркой */
+        .greeting {
+            font-size: 28px;
+            font-weight: 600;
+            color: #1c1c1e;
+            margin-bottom: 30px;
+            letter-spacing: -0.3px;
+        }
+
+        /* Круглая аватарка */
+        .avatar-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease;
+        }
+
+        .avatar:active {
+            transform: scale(0.95);
+        }
+
+        .avatar-initials {
+            font-size: 52px;
+            font-weight: 500;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        /* Имя пользователя */
+        .username {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1c1c1e;
+            margin-bottom: 40px;
+            letter-spacing: -0.2px;
+        }
+
+        /* iOS стиль кнопки */
+        .ios-button {
+            background-color: #007aff;
+            border: none;
+            border-radius: 14px;
+            padding: 16px 20px;
+            font-size: 17px;
+            font-weight: 600;
+            color: white;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+        }
+
+        .ios-button:active {
+            background-color: #0051a8;
+            transform: scale(0.97);
+            box-shadow: 0 1px 4px rgba(0, 122, 255, 0.2);
+        }
+
+        /* Стиль главного меню */
+        .main-menu {
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .menu-header {
+            margin-bottom: 32px;
+        }
+
+        .menu-header .avatar {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 16px;
+        }
+
+        .menu-header .avatar-initials {
+            font-size: 36px;
+        }
+
+        .menu-header .username {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .menu-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #1c1c1e;
+            letter-spacing: -0.5px;
+        }
+
+        .menu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .menu-item {
+            background-color: #f2f2f7;
+            border-radius: 14px;
+            padding: 16px 20px;
+            font-size: 17px;
+            font-weight: 500;
+            color: #007aff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .menu-item:active {
+            background-color: #e5e5ea;
+            transform: scale(0.98);
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            width: 32px;
+        }
+
+        .menu-text {
+            flex: 1;
+        }
+
+        .back-button {
+            background-color: #8e8e93;
+            margin-top: 20px;
+        }
+
+        .back-button:active {
+            background-color: #6c6c70;
+        }
+
+        /* Темная тема iOS */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #000000;
+            }
+            .greeting, .username, .menu-title, .menu-header .username {
+                color: #ffffff;
+            }
+            .menu-item {
+                background-color: #1c1c1e;
+                color: #0a84ff;
+            }
+            .menu-item:active {
+                background-color: #2c2c2e;
+            }
+            .avatar {
+                background: linear-gradient(135deg, #0a84ff 0%, #5e5ce0 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <!-- Начальный экран -->
+        <div id="startScreen">
+            <div class="greeting" id="greetingText">Здравствуйте, </div>
+            <div class="avatar-wrapper">
+                <div class="avatar">
+                    <div class="avatar-initials" id="avatarInitials"></div>
+                </div>
+            </div>
+            <div class="username" id="usernameDisplay"></div>
+            <button class="ios-button" id="startBtn">Начать</button>
+        </div>
+
+        <!-- Главное меню -->
+        <div id="mainMenu" class="main-menu">
+            <div class="menu-header">
+                <div class="avatar-wrapper">
+                    <div class="avatar">
+                        <div class="avatar-initials" id="menuAvatarInitials"></div>
+                    </div>
+                </div>
+                <div class="username" id="menuUsername"></div>
+            </div>
+            <div class="menu-title">🏠 Главное меню</div>
+            <div class="menu-grid">
+                <div class="menu-item" data-action="market">
+                    <span class="menu-icon">🛍️</span>
+                    <span class="menu-text">Маркет скинов</span>
+                </div>
+                <div class="menu-item" data-action="inventory">
+                    <span class="menu-icon">📦</span>
+                    <span class="menu-text">Мои покупки</span>
+                </div>
+                <div class="menu-item" data-action="support">
+                    <span class="menu-icon">💬</span>
+                    <span class="menu-text">Поддержка</span>
+                </div>
+                <div class="menu-item" data-action="profile">
+                    <span class="menu-icon">👤</span>
+                    <span class="menu-text">Профиль</span>
+                </div>
+            </div>
+            <button class="ios-button back-button" id="backBtn">Выйти</button>
+        </div>
+    </div>
+
+    <script>
+        // Инициализация Telegram WebApp
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+
+        // Получаем данные пользователя
+        let user = tg.initDataUnsafe?.user;
+        if (!user || !user.id) {
+            // Тестовые данные для локальной разработки
+            user = {
+                first_name: "Алексей",
+                last_name: "",
+                username: "alexey",
+                id: 123456789,
+                photo_url: null
+            };
+        }
+
+        const firstName = user.first_name || "Гость";
+        const lastName = user.last_name || "";
+        const fullName = `${firstName} ${lastName}`.trim();
+        const initials = firstName.charAt(0).toUpperCase();
+
+        // Элементы DOM
+        const startScreen = document.getElementById("startScreen");
+        const mainMenu = document.getElementById("mainMenu");
+        const greetingText = document.getElementById("greetingText");
+        const avatarInitials = document.getElementById("avatarInitials");
+        const usernameDisplay = document.getElementById("usernameDisplay");
+        const menuAvatarInitials = document.getElementById("menuAvatarInitials");
+        const menuUsername = document.getElementById("menuUsername");
+        const startBtn = document.getElementById("startBtn");
+        const backBtn = document.getElementById("backBtn");
+
+        // Заполняем данные
+        greetingText.textContent = `Здравствуйте, ${firstName}`;
+        usernameDisplay.textContent = fullName;
+        menuUsername.textContent = fullName;
+        avatarInitials.textContent = initials;
+        menuAvatarInitials.textContent = initials;
+
+        // Если есть фото, можно показать его (редко бывает)
+        if (user.photo_url) {
+            const avatarDivs = document.querySelectorAll('.avatar');
+            avatarDivs.forEach(div => {
+                div.innerHTML = `<img src="${user.photo_url}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+            });
+        }
+
+        // Функции переключения экранов
+        function showMainMenu() {
+            startScreen.style.display = "none";
+            mainMenu.style.display = "block";
+            tg.sendData(JSON.stringify({ action: "menu_opened", user_id: user.id, user_name: firstName }));
+        }
+
+        function showStartScreen() {
+            startScreen.style.display = "block";
+            mainMenu.style.display = "none";
+        }
+
+        // Обработчик кнопки "Начать"
+        startBtn.addEventListener("click", () => {
+            showMainMenu();
+        });
+
+        // Обработчик кнопки "Выйти"
+        backBtn.addEventListener("click", () => {
+            showStartScreen();
+        });
+
+        // Обработчики пунктов меню
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const action = item.dataset.action;
+                const text = item.querySelector('.menu-text').textContent;
+                
+                // Отправляем данные в Telegram
+                tg.sendData(JSON.stringify({ 
+                    action: "menu_click", 
+                    menu_item: action,
+                    menu_text: text,
+                    user_id: user.id 
+                }));
+                
+                // Временные действия (замените на свои)
+                switch(action) {
+                    case 'market':
+                        tg.showAlert("🛍️ Маркет скинов\n\nСкоро здесь появится каталог скинов CS2 и Dota 2!");
+                        break;
+                    case 'inventory':
+                        tg.showAlert("📦 Мои покупки\n\nУ вас пока нет покупок.");
+                        break;
+                    case 'support':
+                        tg.showAlert("💬 Поддержка\n\nСвяжитесь с нами: @DobeworksSupport");
+                        break;
+                    case 'profile':
+                        tg.showAlert(`👤 Ваш профиль\n\nИмя: ${fullName}\nID: ${user.id}\n\nБаланс: 0 Stars`);
+                        break;
+                    default:
+                        tg.showAlert(`Вы выбрали: ${text}`);
+                }
+            });
+        });
+
+        // Настраиваем главную кнопку Telegram (для удобства)
+        tg.MainButton.setText("✨ Открыть меню");
+        tg.MainButton.onClick(() => {
+            if (startScreen.style.display !== "none") {
+                showMainMenu();
+            } else {
+                tg.showAlert("Вы уже в главном меню");
+            }
+        });
+        tg.MainButton.show();
+
+        // Сообщаем, что приложение загружено
+        tg.ready();
+        
+        console.log("Приложение загружено, пользователь:", firstName);
+    </script>
+</body>
+</html>
