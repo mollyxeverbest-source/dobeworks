@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head><!DOCTYPE html>
-<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
@@ -16,17 +14,9 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', Helvetica, Arial, sans-serif;
-            background: #000000;
+            background: #0a0a0a;
             min-height: 100vh;
-            color: #ffffff;
-        }
-
-        .glass-panel {
-            background: rgba(28, 28, 30, 0.8);
-            backdrop-filter: blur(20px);
-            border-radius: 32px;
-            border: 0.5px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            color: #e0e0e0;
         }
 
         .container {
@@ -54,12 +44,11 @@
         }
 
         .login-card {
-            background: rgba(28, 28, 30, 0.9);
-            backdrop-filter: blur(30px);
-            border-radius: 48px;
+            background: #111111;
+            border-radius: 24px;
             padding: 32px 24px;
-            border: 0.5px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid #222222;
+            width: 100%;
         }
 
         .logo {
@@ -68,599 +57,73 @@
         }
 
         .logo-icon {
-            font-size: 64px;
-            background: linear-gradient(135deg, #ff9500, #ff2d55);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-size: 48px;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 2px;
         }
 
         .logo-text {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ffffff, #8e8e93);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .input-group {
-            margin-bottom: 16px;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 16px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 30px;
-            font-size: 17px;
-            color: white;
-            font-family: inherit;
-            transition: all 0.2s;
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: #ff9500;
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .input-field::placeholder {
-            color: #8e8e93;
-        }
-
-        .ios-button {
-            background: #007aff;
-            border: none;
-            border-radius: 30px;
-            padding: 16px 20px;
-            font-size: 17px;
-            font-weight: 600;
-            color: white;
-            width: 100%;
-            cursor: pointer;
-            transition: all 0.2s;
+            letter-spacing: 1px;
+            color: #d4af37;
             margin-top: 8px;
         }
 
-        .ios-button:active {
-            transform: scale(0.97);
-            opacity: 0.8;
+        .logo-sub {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
         }
 
-        .ios-button-outline {
-            background: transparent;
-            border: 1px solid #007aff;
-            color: #007aff;
-        }
-
-        /* Главное меню */
-        .main-menu {
-            display: none;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-        }
-
-        .user-welcome {
-            font-size: 20px;
-            font-weight: 600;
-        }
-
-        .balance-card {
-            background: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%);
-            border-radius: 32px;
-            padding: 24px;
-            margin-bottom: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .balance-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .balance-label {
-            font-size: 14px;
-            color: #8e8e93;
-        }
-
-        .balance-value {
-            font-size: 36px;
-            font-weight: 700;
-            color: #ffd700;
-        }
-
-        .topup-btn {
-            background: #ff9500;
+        .btn {
             border: none;
-            border-radius: 30px;
-            padding: 10px 20px;
-            font-weight: 600;
-            color: white;
-            cursor: pointer;
-        }
-
-        .action-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-
-        .action-card {
-            background: rgba(28, 28, 30, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 28px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 0.5px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .action-card:active {
-            transform: scale(0.98);
-            background: rgba(44, 44, 46, 0.9);
-        }
-
-        .action-icon {
-            font-size: 36px;
-            width: 56px;
-            height: 56px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .action-text {
-            flex: 1;
-        }
-
-        .action-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .action-subtitle {
-            font-size: 13px;
-            color: #8e8e93;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: space-around;
-            gap: 16px;
-            margin-top: 20px;
-        }
-
-        .social-btn {
-            flex: 1;
-            background: rgba(28, 28, 30, 0.7);
-            border-radius: 28px;
-            padding: 14px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .social-btn:active {
-            transform: scale(0.97);
-        }
-
-        /* Анимация уведомления */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(20px);
-            border-radius: 40px;
+            border-radius: 12px;
             padding: 14px 20px;
-            text-align: center;
-            z-index: 1000;
-            animation: fadeInUp 0.3s;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
-</head>
-<body>
-    <div class="container" id="app">
-        <!-- Экран входа -->
-        <div id="loginScreen" class="login-screen fade-in">
-            <div class="login-card" style="width: 100%;">
-                <div class="logo">
-                    <div class="logo-icon">🦀</div>
-                    <div class="logo-text">RUSTY PROJECT</div>
-                    <div style="font-size: 14px; color: #8e8e93; margin-top: 8px;">Копия раста Rusty</div>
-                </div>
-                <div class="input-group">
-                    <input type="text" id="loginUsername" class="input-field" placeholder="Логин" autocomplete="off">
-                </div>
-                <div class="input-group">
-                    <input type="password" id="loginPassword" class="input-field" placeholder="Пароль">
-                </div>
-                <button class="ios-button" id="loginBtn">Войти</button>
-                <button class="ios-button ios-button-outline" id="registerBtn" style="margin-top: 12px;">Регистрация</button>
-            </div>
-        </div>
-
-        <!-- Главное меню (после входа) -->
-        <div id="mainMenu" class="main-menu fade-in">
-            <div class="header">
-                <div class="user-welcome" id="welcomeUser">Привет, Rusty</div>
-                <div style="font-size: 24px;">🦀</div>
-            </div>
-
-            <div class="balance-card glass-panel">
-                <div class="balance-info">
-                    <div class="balance-label">💰 Баланс</div>
-                    <div class="balance-value" id="balanceValue">0</div>
-                </div>
-                <button class="topup-btn" id="topupBtn">Пополнить Stars</button>
-            </div>
-
-            <div class="action-grid">
-                <div class="action-card" id="downloadGameBtn">
-                    <div class="action-icon">📥</div>
-                    <div class="action-text">
-                        <div class="action-title">Скачать игру</div>
-                        <div class="action-subtitle">Версия 1.0.2 | 2.4 GB</div>
-                    </div>
-                    <div style="color:#007aff;">↓</div>
-                </div>
-
-                <div class="action-card" id="creatorLink">
-                    <div class="action-icon">👤</div>
-                    <div class="action-text">
-                        <div class="action-title">Создатель</div>
-                        <div class="action-subtitle">@wasxr</div>
-                    </div>
-                    <div style="color:#007aff;">→</div>
-                </div>
-
-                <div class="action-card" id="communityLink">
-                    <div class="action-icon">💬</div>
-                    <div class="action-text">
-                        <div class="action-title">Сообщество</div>
-                        <div class="action-subtitle">rustyrust</div>
-                    </div>
-                    <div style="color:#007aff;">→</div>
-                </div>
-            </div>
-
-            <div class="social-links">
-                <div class="social-btn" id="logoutBtn">
-                    <span>🚪</span> <span>Выйти</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const tg = window.Telegram.WebApp;
-        tg.ready();
-        tg.expand();
-
-        // ========== РАБОТА С АККАУНТАМИ ==========
-        // Хранилище пользователей (в реальном проекте - бэкенд, но для демо localStorage)
-        let users = JSON.parse(localStorage.getItem("rusty_users")) || {};
-        let currentUser = localStorage.getItem("rusty_current_user") || null;
-
-        const loginScreen = document.getElementById("loginScreen");
-        const mainMenu = document.getElementById("mainMenu");
-        const loginUsername = document.getElementById("loginUsername");
-        const loginPassword = document.getElementById("loginPassword");
-        const loginBtn = document.getElementById("loginBtn");
-        const registerBtn = document.getElementById("registerBtn");
-        const welcomeUser = document.getElementById("welcomeUser");
-        const balanceValue = document.getElementById("balanceValue");
-        const topupBtn = document.getElementById("topupBtn");
-        const downloadGameBtn = document.getElementById("downloadGameBtn");
-        const creatorLink = document.getElementById("creatorLink");
-        const communityLink = document.getElementById("communityLink");
-        const logoutBtn = document.getElementById("logoutBtn");
-
-        // Функция обновления UI после входа
-        function updateUI() {
-            if (currentUser && users[currentUser]) {
-                const userData = users[currentUser];
-                welcomeUser.textContent = `Привет, ${currentUser}`;
-                balanceValue.textContent = userData.balance || 0;
-                loginScreen.style.display = "none";
-                mainMenu.style.display = "block";
-            } else {
-                loginScreen.style.display = "flex";
-                mainMenu.style.display = "none";
-                currentUser = null;
-                localStorage.removeItem("rusty_current_user");
-            }
-        }
-
-        // Сохранение баланса
-        function saveBalance(newBalance) {
-            if (currentUser && users[currentUser]) {
-                users[currentUser].balance = newBalance;
-                localStorage.setItem("rusty_users", JSON.stringify(users));
-                balanceValue.textContent = newBalance;
-            }
-        }
-
-        function getBalance() {
-            if (currentUser && users[currentUser]) {
-                return users[currentUser].balance || 0;
-            }
-            return 0;
-        }
-
-        // Вход
-        loginBtn.addEventListener("click", () => {
-            const username = loginUsername.value.trim();
-            const password = loginPassword.value.trim();
-            if (!username || !password) {
-                tg.showAlert("Введите логин и пароль");
-                return;
-            }
-            if (users[username] && users[username].password === password) {
-                currentUser = username;
-                localStorage.setItem("rusty_current_user", currentUser);
-                updateUI();
-                tg.showAlert(`Добро пожаловать, ${username}!`);
-            } else {
-                tg.showAlert("Неверный логин или пароль");
-            }
-        });
-
-        // Регистрация
-        registerBtn.addEventListener("click", () => {
-            const username = loginUsername.value.trim();
-            const password = loginPassword.value.trim();
-            if (!username || !password) {
-                tg.showAlert("Введите логин и пароль для регистрации");
-                return;
-            }
-            if (users[username]) {
-                tg.showAlert("Пользователь уже существует");
-                return;
-            }
-            users[username] = {
-                password: password,
-                balance: 100 // стартовый баланс
-            };
-            localStorage.setItem("rusty_users", JSON.stringify(users));
-            currentUser = username;
-            localStorage.setItem("rusty_current_user", currentUser);
-            updateUI();
-            tg.showAlert(`Регистрация успешна! Вам начислено 100 Stars`);
-        });
-
-        // Выход
-        logoutBtn.addEventListener("click", () => {
-            currentUser = null;
-            localStorage.removeItem("rusty_current_user");
-            loginUsername.value = "";
-            loginPassword.value = "";
-            updateUI();
-            tg.showAlert("Вы вышли из аккаунта");
-        });
-
-        // Пополнение баланса через Telegram Stars
-        topupBtn.addEventListener("click", () => {
-            tg.sendData(JSON.stringify({
-                action: "topup",
-                user_id: tg.initDataUnsafe?.user?.id || 0,
-                username: currentUser
-            }));
-            tg.showAlert("💎 Пополнение баланса\n\nПереведите Telegram Stars на @wasxr\nУкажите ваш логин: " + currentUser);
-            // В демо-режиме добавим тестовое пополнение (для удобства)
-            // В реальности бот должен начислять после подтверждения
-        });
-
-        // Скачивание игры (файл)
-        downloadGameBtn.addEventListener("click", () => {
-            // Ссылка на файл (замените на реальную)
-            const fileUrl = "https://drive.google.com/uc?export=download&id=ВАШ_ID_ФАЙЛА";
-            // Пока просто уведомление и открытие ссылки в браузере
-            tg.showAlert("Скачивание начнется через браузер. Если не началось, проверьте ссылку.");
-            window.open("https://example.com/download/rusty_project.zip", "_blank");
-            // В реальности укажите вашу ссылку
-        });
-
-        // Ссылка на создателя (Telegram)
-        creatorLink.addEventListener("click", () => {
-            window.open("https://t.me/wasxr", "_blank");
-        });
-
-        // Ссылка на сообщество
-        communityLink.addEventListener("click", () => {
-            window.open("https://t.me/rustyrust", "_blank");
-        });
-
-        // Инициализация
-        updateUI();
-
-        // Интеграция с Telegram: если нужно показать приветствие бота
-        if (tg.initDataUnsafe?.user) {
-            const tgUser = tg.initDataUnsafe.user;
-            console.log("Telegram user:", tgUser);
-            // Можно предложить авторизацию через Telegram, но оставим отдельную систему
-        }
-    </script>
-</body>
-</html>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Dobeworks | Open Case</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', Helvetica, Arial, sans-serif;
-            background: #0a0a0f;
-            min-height: 100vh;
-            color: #ffffff;
-        }
-
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px 16px 30px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.4s ease-out;
-        }
-
-        /* Экран входа */
-        .login-screen {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .greeting {
-            font-size: 28px;
+            font-size: 16px;
             font-weight: 600;
-            margin-bottom: 30px;
-            letter-spacing: -0.3px;
-            color: #ffffff;
-        }
-
-        .avatar {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
-            border-radius: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.3);
-            overflow: hidden;
-        }
-
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .avatar-initials {
-            font-size: 52px;
-            font-weight: 500;
-            color: white;
-            text-transform: uppercase;
-        }
-
-        .username-display {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 40px;
-            color: #ffffff;
-        }
-
-        .ios-button {
-            background: #007aff;
-            border: none;
-            border-radius: 14px;
-            padding: 16px 20px;
-            font-size: 17px;
-            font-weight: 600;
-            color: white;
             width: 100%;
             cursor: pointer;
             transition: all 0.2s;
+            margin-top: 12px;
         }
 
-        .ios-button:active {
-            background: #0051a8;
-            transform: scale(0.97);
+        .btn-primary {
+            background: #d4af37;
+            color: #0a0a0a;
         }
 
-        .ios-button:disabled {
-            opacity: 0.5;
-            transform: none;
+        .btn-primary:active {
+            background: #c4a030;
+            transform: scale(0.98);
+        }
+
+        .btn-steam {
+            background: #1b2838;
+            color: white;
+            border: 1px solid #2c4056;
+        }
+
+        .btn-steam:active {
+            background: #2c4056;
+            transform: scale(0.98);
+        }
+
+        .btn-telegram {
+            background: #2481cc;
+            color: white;
+            border: 1px solid #3a9bdf;
+        }
+
+        .btn-telegram:active {
+            background: #3a9bdf;
+            transform: scale(0.98);
         }
 
         /* Главное меню */
         .main-menu {
             display: none;
-        }
-
-        /* Шапка профиля */
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            background: #1c1c1e;
-            border-radius: 20px;
-            padding: 16px;
-            margin-bottom: 24px;
-        }
-
-        .small-avatar {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
-            border-radius: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 600;
-            color: white;
-            overflow: hidden;
-        }
-
-        .small-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-header-info {
-            flex: 1;
-        }
-
-        .profile-header-name {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .profile-header-status {
-            font-size: 14px;
-            color: #8e8e93;
         }
 
         /* Нижняя навигация */
@@ -671,12 +134,11 @@
             right: 0;
             max-width: 400px;
             margin: 0 auto;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
+            background: #111111;
             display: flex;
             justify-content: space-around;
-            padding: 10px 20px 20px;
-            border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-top: 1px solid #222;
         }
 
         .nav-item {
@@ -684,18 +146,14 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
-            font-size: 11px;
-            color: #8e8e93;
+            font-size: 12px;
+            color: #666;
             cursor: pointer;
             transition: color 0.2s;
         }
 
         .nav-item.active {
-            color: #007aff;
-        }
-
-        .nav-icon {
-            font-size: 22px;
+            color: #d4af37;
         }
 
         /* Контент вкладок */
@@ -710,263 +168,168 @@
 
         /* Карточки */
         .card {
-            background: #1c1c1e;
-            border-radius: 14px;
-            padding: 16px;
-            margin-bottom: 12px;
+            background: #111111;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid #222;
         }
 
         .card-title {
-            font-size: 17px;
+            font-size: 14px;
             font-weight: 600;
-            margin-bottom: 12px;
+            color: #d4af37;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
         }
 
-        /* Баланс */
         .balance-card {
-            background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
+            background: #111111;
             border-radius: 20px;
             padding: 20px;
-            margin-bottom: 20px;
-            color: white;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #222;
         }
 
         .balance-label {
-            font-size: 14px;
-            opacity: 0.8;
-            margin-bottom: 8px;
+            font-size: 13px;
+            color: #666;
         }
 
         .balance-value {
-            font-size: 44px;
+            font-size: 32px;
             font-weight: 700;
-            margin-bottom: 16px;
+            color: #d4af37;
         }
 
-        /* ===== КЕЙС С РУЛЕТКОЙ ===== */
-        .case-container {
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
-            border-radius: 24px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .topup-btn {
+            background: #d4af37;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-weight: 600;
+            color: #0a0a0a;
+            cursor: pointer;
+            font-size: 14px;
         }
 
-        .case-image {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 16px;
-            background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
-            border-radius: 20px;
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .info-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .info-value {
+            font-size: 14px;
+            font-weight: 500;
+            color: #e0e0e0;
+        }
+
+        .info-value.steam {
+            color: #66c0f4;
+        }
+
+        .info-value.telegram {
+            color: #2481cc;
+        }
+
+        .link-btn {
+            background: transparent;
+            border: 1px solid #d4af37;
+            border-radius: 30px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #d4af37;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 16px;
+        }
+
+        .link-btn:active {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .disconnect-btn {
+            border-color: #ff3b30;
+            color: #ff3b30;
+        }
+
+        .action-card {
+            background: #111111;
+            border-radius: 16px;
+            padding: 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            gap: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #222;
+            margin-bottom: 12px;
         }
 
-        .case-image img {
-            width: 80%;
-            height: 80%;
-            object-fit: contain;
+        .action-card:active {
+            transform: scale(0.98);
+            background: #161616;
         }
 
-        .case-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 8px;
+        .action-text {
+            flex: 1;
         }
 
-        .case-price {
-            font-size: 28px;
-            font-weight: 700;
-            color: #ffd700;
-            margin-bottom: 16px;
-        }
-
-        /* Рулетка */
-        .roulette-container {
-            background: #0a0a0f;
-            border-radius: 20px;
-            padding: 20px;
-            margin: 20px 0;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .roulette-track {
-            overflow: hidden;
-            border-radius: 16px;
-            background: #1c1c1e;
-            position: relative;
-        }
-
-        .roulette-items {
-            display: flex;
-            gap: 12px;
-            padding: 12px;
-            transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        }
-
-        .roulette-skin {
-            min-width: 100px;
-            background: #2c2c2e;
-            border-radius: 12px;
-            padding: 12px;
-            text-align: center;
-        }
-
-        .roulette-skin img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 8px;
-        }
-
-        .roulette-skin-name {
-            font-size: 12px;
+        .action-title {
+            font-size: 16px;
             font-weight: 600;
             margin-bottom: 4px;
         }
 
-        .roulette-skin-price {
+        .action-subtitle {
             font-size: 12px;
-            color: #ffd700;
+            color: #666;
         }
 
-        /* Указатель */
-        .pointer {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 25px solid #ffd700;
-            z-index: 10;
-            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
-        }
-
-        /* Результат */
-        .result-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.95);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            animation: fadeIn 0.3s;
-        }
-
-        .result-card {
-            background: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%);
-            border-radius: 32px;
-            padding: 32px;
-            text-align: center;
-            max-width: 300px;
-            width: 90%;
-            animation: dropBounce 0.5s ease-out;
-        }
-
-        @keyframes dropBounce {
-            0% { transform: scale(0.3) rotate(-10deg); opacity: 0; }
-            60% { transform: scale(1.05) rotate(2deg); }
-            100% { transform: scale(1) rotate(0); opacity: 1; }
-        }
-
-        .result-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 16px;
-            background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .result-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .result-name {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .result-price {
-            font-size: 24px;
-            font-weight: 700;
-            color: #ffd700;
-            margin-bottom: 24px;
-        }
-
-        .result-btn {
-            background: #007aff;
-            border: none;
-            border-radius: 14px;
-            padding: 14px;
+        .action-arrow {
+            color: #d4af37;
             font-size: 16px;
-            font-weight: 600;
-            color: white;
-            width: 100%;
-            cursor: pointer;
         }
 
-        .history-list {
+        .social-links {
+            display: flex;
+            justify-content: space-around;
+            gap: 12px;
             margin-top: 16px;
         }
 
-        .history-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px;
-            background: #1c1c1e;
-            border-radius: 12px;
-            margin-bottom: 6px;
-            font-size: 13px;
+        .social-btn {
+            flex: 1;
+            background: #111111;
+            border-radius: 16px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #222;
+            font-size: 14px;
+            font-weight: 500;
         }
 
-        .history-item img {
-            width: 30px;
-            height: 30px;
-            border-radius: 6px;
+        .social-btn:active {
+            transform: scale(0.97);
+            background: #161616;
         }
 
-        /* Инпут */
-        .steam-input {
-            width: 100%;
-            padding: 14px;
-            background: #1c1c1e;
-            border: 1px solid #3a3a3c;
-            border-radius: 14px;
-            font-size: 16px;
-            font-family: inherit;
-            color: white;
-            margin-bottom: 12px;
-        }
-
-        .steam-input:focus {
-            outline: none;
-            border-color: #007aff;
-        }
-
-        .info-text {
-            font-size: 13px;
-            color: #8e8e93;
-            margin-bottom: 16px;
+        .logout-btn {
+            border-color: #ff3b30;
+            color: #ff3b30;
         }
     </style>
 </head>
@@ -974,107 +337,121 @@
     <div class="container" id="app">
         <!-- Экран входа -->
         <div id="loginScreen" class="login-screen fade-in">
-            <div class="greeting" id="greetingText">Здравствуйте, </div>
-            <div class="avatar" id="avatarContainer">
-                <div class="avatar-initials" id="avatarInitials"></div>
+            <div class="login-card">
+                <div class="logo">
+                    <div class="logo-icon">RUSTY</div>
+                    <div class="logo-text">PROJECT</div>
+                    <div class="logo-sub">copypaste rusty</div>
+                </div>
+                <button class="btn btn-steam" id="steamLoginBtn">войти через steam</button>
+                <button class="btn btn-telegram" id="telegramLoginBtn">войти через telegram</button>
             </div>
-            <div class="username-display" id="usernameDisplay"></div>
-            <button class="ios-button" id="startBtn">Начать</button>
         </div>
 
         <!-- Главное меню -->
-        <div id="mainMenu" class="main-menu">
-            <div class="profile-header">
-                <div class="small-avatar" id="menuAvatarContainer">
-                    <div class="avatar-initials" id="menuAvatarInitials">М</div>
-                </div>
-                <div class="profile-header-info">
-                    <div class="profile-header-name" id="menuUsername"></div>
-                    <div class="profile-header-status">⚡ Активен</div>
-                </div>
-            </div>
-
-            <!-- Вкладка Кейсы -->
-            <div class="tab-content active" id="tab-cases">
+        <div id="mainMenu" class="main-menu fade-in">
+            <!-- Вкладка ГЛАВНАЯ -->
+            <div class="tab-content active" id="tab-home">
                 <div class="balance-card">
-                    <div class="balance-label">💰 Твой баланс</div>
-                    <div class="balance-value" id="balanceValue">0</div>
-                    <button class="ios-button" id="topupBtn" style="background: rgba(255,255,255,0.2);">Пополнить Stars</button>
-                </div>
-
-                <!-- Кейс с рулеткой -->
-                <div class="case-container">
-                    <div class="case-image">
-                        <img src="https://cdn.steamcommunity.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uieDhwzPzUYjVU08i3mr-HlfL2N7LEgn8u7MxkhbmRr4z2jQ2xrxYtZ2r6ddOXIQRrZA-G8wO8x-bv1Ja47cvJynXo-9Wln3VvsQ" alt="Case">
+                    <div class="balance-info">
+                        <div class="balance-label">баланс</div>
+                        <div class="balance-value" id="balanceValue">0</div>
                     </div>
-                    <div class="case-title">💰 Money Case</div>
-                    <div class="case-price">⭐ 100 Stars</div>
-                    <button class="ios-button" id="openCaseBtn" style="background: #ffd700; color: #000;">🎲 ОТКРЫТЬ КЕЙС</button>
+                    <button class="topup-btn" id="topupBtn">пополнить stars</button>
                 </div>
 
-                <!-- Рулетка (скрыта по умолчанию) -->
-                <div id="rouletteArea" style="display: none;">
-                    <div class="roulette-container">
-                        <div class="pointer"></div>
-                        <div class="roulette-track">
-                            <div class="roulette-items" id="rouletteItems"></div>
-                        </div>
+                <div class="action-card" id="downloadGameBtn">
+                    <div class="action-text">
+                        <div class="action-title">скачать игру</div>
+                        <div class="action-subtitle">версия 1.0.2</div>
                     </div>
+                    <div class="action-arrow">→</div>
                 </div>
 
-                <!-- История открытий -->
-                <div class="card" id="historyCard" style="display: none;">
-                    <div class="card-title">📜 История открытий</div>
-                    <div class="history-list" id="historyList"></div>
+                <div class="action-card" id="creatorLink">
+                    <div class="action-text">
+                        <div class="action-title">создатель</div>
+                        <div class="action-subtitle">@wasxr</div>
+                    </div>
+                    <div class="action-arrow">→</div>
+                </div>
+
+                <div class="action-card" id="communityLink">
+                    <div class="action-text">
+                        <div class="action-title">сообщество</div>
+                        <div class="action-subtitle">rustyrust</div>
+                    </div>
+                    <div class="action-arrow">→</div>
                 </div>
             </div>
 
-            <!-- Вкладка Инвентарь (пустой) -->
-            <div class="tab-content" id="tab-inventory">
+            <!-- Вкладка АККАУНТ STEAM -->
+            <div class="tab-content" id="tab-steam">
                 <div class="card">
-                    <div class="card-title">📦 Мой инвентарь</div>
-                    <div style="text-align: center; padding: 40px 20px; color: #8e8e93;">
-                        📭 Инвентарь пуст<br>
-                        <span style="font-size: 13px;">Откройте кейс, чтобы получить скины!</span>
+                    <div class="card-title">steam аккаунт</div>
+                    <div class="info-row">
+                        <span class="info-label">id</span>
+                        <span class="info-value steam" id="steamId">не привязан</span>
                     </div>
+                    <div class="info-row">
+                        <span class="info-label">никнейм</span>
+                        <span class="info-value" id="steamName">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">уровень</span>
+                        <span class="info-value" id="steamLevel">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">страна</span>
+                        <span class="info-value" id="steamCountry">—</span>
+                    </div>
+                    <button class="link-btn" id="linkSteamBtn">привязать steam</button>
+                    <button class="link-btn disconnect-btn" id="unlinkSteamBtn" style="display: none;">отвязать steam</button>
                 </div>
             </div>
 
-            <!-- Вкладка Профиль -->
-            <div class="tab-content" id="tab-profile">
+            <!-- Вкладка АККАУНТ TELEGRAM -->
+            <div class="tab-content" id="tab-telegram">
                 <div class="card">
-                    <div class="card-title">🔗 Steam аккаунт</div>
-                    <input type="text" class="steam-input" id="steamLinkInput" placeholder="Введите ссылку для обмена">
-                    <div class="info-text">Ссылка обмена нужна для отправки скинов</div>
-                    <button class="ios-button" id="saveSteamBtn">Сохранить ссылку</button>
-                </div>
-
-                <div class="card">
-                    <div class="card-title">📊 Статистика</div>
-                    <div class="history-item" style="justify-content: space-between; cursor: default;">
-                        <span>Всего открытий</span>
-                        <span id="opensCount" style="font-weight: 700;">0</span>
+                    <div class="card-title">telegram аккаунт</div>
+                    <div class="info-row">
+                        <span class="info-label">id</span>
+                        <span class="info-value telegram" id="tgId">не привязан</span>
                     </div>
-                    <div class="history-item" style="justify-content: space-between; cursor: default;">
-                        <span>Потрачено Stars</span>
-                        <span id="spentAmount" style="font-weight: 700;">0</span>
+                    <div class="info-row">
+                        <span class="info-label">имя</span>
+                        <span class="info-value" id="tgFirstName">—</span>
                     </div>
+                    <div class="info-row">
+                        <span class="info-label">фамилия</span>
+                        <span class="info-value" id="tgLastName">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">username</span>
+                        <span class="info-value" id="tgUsername">—</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">язык</span>
+                        <span class="info-value" id="tgLanguage">—</span>
+                    </div>
+                    <button class="link-btn" id="linkTgBtn">привязать telegram</button>
+                    <button class="link-btn disconnect-btn" id="unlinkTgBtn" style="display: none;">отвязать telegram</button>
                 </div>
             </div>
 
             <!-- Нижняя навигация -->
             <div class="bottom-nav">
-                <div class="nav-item active" data-tab="cases">
-                    <div class="nav-icon">🎲</div>
-                    <span>Кейсы</span>
+                <div class="nav-item active" data-tab="home">
+                    <span>главная</span>
                 </div>
-                <div class="nav-item" data-tab="inventory">
-                    <div class="nav-icon">📦</div>
-                    <span>Инвентарь</span>
+                <div class="nav-item" data-tab="steam">
+                    <span>steam</span>
                 </div>
-                <div class="nav-item" data-tab="profile">
-                    <div class="nav-icon">👤</div>
-                    <span>Профиль</span>
+                <div class="nav-item" data-tab="telegram">
+                    <span>telegram</span>
+                </div>
+                <div class="nav-item" id="logoutNavBtn">
+                    <span>выйти</span>
                 </div>
             </div>
         </div>
@@ -1085,242 +462,277 @@
         tg.ready();
         tg.expand();
 
-        // ========== ДАННЫЕ ПОЛЬЗОВАТЕЛЯ ==========
-        let user = tg.initDataUnsafe?.user;
-        if (!user || !user.id) {
-            user = { first_name: "Игрок", last_name: "", id: 123456789, photo_url: null };
+        // ========== ХРАНИЛИЩЕ ==========
+        let users = JSON.parse(localStorage.getItem("rusty_users")) || {};
+        let currentUserId = localStorage.getItem("rusty_current_user") || null;
+
+        // ========== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ==========
+        function saveUsers() {
+            localStorage.setItem("rusty_users", JSON.stringify(users));
         }
 
-        const firstName = user.first_name || "Игрок";
-        const fullName = `${firstName} ${user.last_name || ""}`.trim();
-        const initial = firstName.charAt(0).toUpperCase();
-        const userPhotoUrl = user.photo_url;
-
-        // ========== СКИНЫ ДЛЯ КЕЙСА (рулетка) ==========
-        const caseSkins = [
-            { name: "★ Karambit | Doppler", price: 5000, rarity: "legendary", iconUrl: "https://cdn.steamcommunity.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhhwszHeCRA7dizq5OZm_bzDL7c3W9E5cB0luHEodSh2QK3_hA5ZGz6dI7HcgA3Zg6F-wXpx-7t15K4vczAyXJm7D9V3nY" },
-            { name: "AWP | Gungnir", price: 3000, rarity: "legendary", iconUrl: "https://cdn.steamcommunity.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FA957fPLcQJT6d63qb-HmPbwN7LEgn8u7MxkhbmRr4z2jQ2xrxYtZ2r6ddOXIQRrZA-G8wO8x-bv1Ja47cvJynXo-9Wln3VvsQ" },
-            { name: "AK-47 | Fire Serpent", price: 600, rarity: "rare", iconUrl: "https://cdn.steamcommunity.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJYj1H4-G3koG0hPz2N7LEgn8u7MxkhbmRr4z2jQ2xrxYtZ2r6ddOXIQRrZA-G8wO8x-bv1Ja47cvJynXo-9Wln3VvsQ" },
-            { name: "M4A1-S | Printstream", price: 800, rarity: "rare", iconUrl: "https://cdn.steamcommunity.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H6-K3m5S0n_rLPoPck2NpgIhz2-2QoI2hjwGyr0NsYDr7dNLEJgI2ZAyE_AO_w-a9gMTquZSbyi5osiF9wA" },
-            { name: "USP-S | Kill Confirmed", price: 200, rarity: "common", iconUrl: "https://cdn.steamcommunity.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoko26tCBw0_bYcThD6d6xq5OYqPHDPr7Vn2VU7cB4lLuR9I3w0Qzl-hZsZGn6doeeJlE9Yl-F-wW5xLrt0pS66Z2ewCQ27g" },
-            { name: "Desert Eagle | Blaze", price: 150, rarity: "common", iconUrl: "https://cdn.steamcommunity.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0v73dTxD6d6xq5OYqPHDPr7Vn2VU7cB4lLuR9I3w0Qzl-hZsZGn6doeeJlE9Yl-F-wW5xLrt0pS66Z2ewCQ27g" },
-            { name: "SSG 08 | Death Strike", price: 100, rarity: "common", iconUrl: "https://cdn.steamcommunity.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PvQaTJY09SzlZaS2aX3MOvSlzlQucdy2LqU9NmnjAzl_UJoYmqldYSTIQI_NV_X81bvkufxxcjryPo2vmI" }
-        ];
-
-        // ========== ПЕРЕМЕННЫЕ ==========
-        let balance = parseInt(localStorage.getItem("balance")) || 500;
-        let steamLink = localStorage.getItem("steamLink") || "";
-        let opens = parseInt(localStorage.getItem("opens")) || 0;
-        let spent = parseInt(localStorage.getItem("spent")) || 0;
-        let history = JSON.parse(localStorage.getItem("caseHistory")) || [];
-
-        // ========== DOM ЭЛЕМЕНТЫ ==========
-        const loginScreen = document.getElementById("loginScreen");
-        const mainMenu = document.getElementById("mainMenu");
-        const greetingText = document.getElementById("greetingText");
-        const avatarContainer = document.getElementById("avatarContainer");
-        const avatarInitials = document.getElementById("avatarInitials");
-        const usernameDisplay = document.getElementById("usernameDisplay");
-        const menuAvatarContainer = document.getElementById("menuAvatarContainer");
-        const menuAvatarInitials = document.getElementById("menuAvatarInitials");
-        const menuUsername = document.getElementById("menuUsername");
-        const startBtn = document.getElementById("startBtn");
-        const balanceValue = document.getElementById("balanceValue");
-        const topupBtn = document.getElementById("topupBtn");
-        const openCaseBtn = document.getElementById("openCaseBtn");
-        const steamLinkInput = document.getElementById("steamLinkInput");
-        const saveSteamBtn = document.getElementById("saveSteamBtn");
-        const opensCount = document.getElementById("opensCount");
-        const spentAmount = document.getElementById("spentAmount");
-        const rouletteArea = document.getElementById("rouletteArea");
-        const rouletteItems = document.getElementById("rouletteItems");
-        const historyCard = document.getElementById("historyCard");
-        const historyList = document.getElementById("historyList");
-
-        // ========== УСТАНОВКА АВАТАРКИ ==========
-        greetingText.textContent = `Здравствуйте, ${firstName}`;
-        usernameDisplay.textContent = fullName || firstName;
-        menuUsername.textContent = fullName || firstName;
-
-        if (userPhotoUrl) {
-            const bigImg = document.createElement('img');
-            bigImg.src = userPhotoUrl;
-            avatarContainer.innerHTML = '';
-            avatarContainer.appendChild(bigImg);
-            const smallImg = document.createElement('img');
-            smallImg.src = userPhotoUrl;
-            menuAvatarContainer.innerHTML = '';
-            menuAvatarContainer.appendChild(smallImg);
-        } else {
-            avatarInitials.textContent = initial;
-            menuAvatarInitials.textContent = initial;
-        }
-
-        // ========== ОБНОВЛЕНИЕ ДАННЫХ ==========
-        function updateBalance() {
-            balanceValue.textContent = balance;
-            localStorage.setItem("balance", balance);
-        }
-
-        function updateStats() {
-            opensCount.textContent = opens;
-            spentAmount.textContent = spent;
-            localStorage.setItem("opens", opens);
-            localStorage.setItem("spent", spent);
-        }
-
-        function updateHistory() {
-            if (history.length === 0) {
-                historyCard.style.display = "none";
-                return;
+        function getCurrentUser() {
+            if (currentUserId && users[currentUserId]) {
+                return users[currentUserId];
             }
-            historyCard.style.display = "block";
-            historyList.innerHTML = history.slice(-10).reverse().map(item => `
-                <div class="history-item">
-                    <img src="${item.iconUrl}" onerror="this.src='https://cdn.steamcommunity.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PvQaTJY09SzlZaS2aX3MOvSlzlQucdy2LqU9NmnjAzl_UJoYmqldYSTIQI_NV_X81bvkufxxcjryPo2vmI'">
-                    <span style="flex:1;">${item.name}</span>
-                    <span style="color:#ffd700;">⭐ ${item.price}</span>
-                </div>
-            `).join('');
+            return null;
         }
 
-        // ========== РУЛЕТКА (ЭФФЕКТ ОТКРЫТИЯ) ==========
-        function buildRoulette() {
-            // Создаем 3 копии скинов для бесконечной прокрутки
-            const duplicated = [...caseSkins, ...caseSkins, ...caseSkins];
-            rouletteItems.innerHTML = duplicated.map(skin => `
-                <div class="roulette-skin">
-                    <img src="${skin.iconUrl}" onerror="this.src='https://cdn.steamcommunity.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PvQaTJY09SzlZaS2aX3MOvSlzlQucdy2LqU9NmnjAzl_UJoYmqldYSTIQI_NV_X81bvkufxxcjryPo2vmI'">
-                    <div class="roulette-skin-name">${skin.name}</div>
-                    <div class="roulette-skin-price">⭐ ${skin.price}</div>
-                </div>
-            `).join('');
+        function updateBalanceDisplay() {
+            const user = getCurrentUser();
+            if (user) {
+                document.getElementById("balanceValue").textContent = user.balance || 0;
+            }
         }
 
-        function showResult(winSkin) {
-            const resultOverlay = document.createElement('div');
-            resultOverlay.className = 'result-overlay';
-            resultOverlay.innerHTML = `
-                <div class="result-card">
-                    <div class="result-icon"><img src="${winSkin.iconUrl}" onerror="this.src='https://cdn.steamcommunity.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PvQaTJY09SzlZaS2aX3MOvSlzlQucdy2LqU9NmnjAzl_UJoYmqldYSTIQI_NV_X81bvkufxxcjryPo2vmI'"></div>
-                    <div class="result-name">${winSkin.name}</div>
-                    <div class="result-price">⭐ ${winSkin.price}</div>
-                    <button class="result-btn" id="closeResultBtn">Забрать</button>
-                </div>
-            `;
-            document.body.appendChild(resultOverlay);
-            document.getElementById('closeResultBtn').addEventListener('click', () => {
-                resultOverlay.remove();
-                rouletteArea.style.display = "none";
-                openCaseBtn.disabled = false;
-                openCaseBtn.textContent = "🎲 ОТКРЫТЬ КЕЙС";
-            });
-        }
-
-        function startRoulette() {
-            const winIndex = Math.floor(Math.random() * caseSkins.length);
-            const winSkin = caseSkins[winIndex];
-            
-            // Вычисляем позицию прокрутки (центрируем на выигрышном скине)
-            const itemWidth = 112; // ширина скина + gap
-            const centerOffset = (rouletteItems.parentElement.clientWidth / 2) - (itemWidth / 2);
-            const targetPosition = (caseSkins.length * itemWidth) + (winIndex * itemWidth) - centerOffset;
-            
-            rouletteItems.style.transition = "transform 2.5s cubic-bezier(0.2, 0.9, 0.3, 1.2)";
-            rouletteItems.style.transform = `translateX(-${targetPosition}px)`;
-            
-            setTimeout(() => {
-                // Снимаем списание баланса (уже сделано до анимации)
-                // Добавляем в историю
-                history.unshift(winSkin);
-                if (history.length > 20) history.pop();
-                localStorage.setItem("caseHistory", JSON.stringify(history));
-                updateHistory();
-                
-                // Показываем результат
-                showResult(winSkin);
-                
-                // Сбрасываем позицию рулетки (скрыто)
-                setTimeout(() => {
-                    rouletteItems.style.transition = "none";
-                    rouletteItems.style.transform = "translateX(0)";
-                }, 500);
-            }, 2500);
-        }
-
-        // Открытие кейса
-        function openCase() {
-            const casePrice = 100;
-            if (balance >= casePrice) {
-                balance -= casePrice;
-                opens++;
-                spent += casePrice;
-                updateBalance();
-                updateStats();
-                
-                // Показываем рулетку
-                buildRoulette();
-                rouletteArea.style.display = "block";
-                openCaseBtn.disabled = true;
-                openCaseBtn.textContent = "🎲 ОТКРЫТИЕ...";
-                
-                // Запускаем анимацию через небольшую задержку
-                setTimeout(() => startRoulette(), 100);
-                
-                tg.sendData(JSON.stringify({ action: "open_case", price: casePrice }));
+        function updateSteamTab() {
+            const user = getCurrentUser();
+            if (user && user.steam) {
+                document.getElementById("steamId").textContent = user.steam.id || "—";
+                document.getElementById("steamName").textContent = user.steam.name || "—";
+                document.getElementById("steamLevel").textContent = user.steam.level || "—";
+                document.getElementById("steamCountry").textContent = user.steam.country || "—";
+                document.getElementById("linkSteamBtn").style.display = "none";
+                document.getElementById("unlinkSteamBtn").style.display = "block";
             } else {
-                tg.showAlert(`❌ Не хватает Stars для открытия кейса!\nНужно: ${casePrice} Stars, у вас: ${balance}`);
+                document.getElementById("steamId").textContent = "не привязан";
+                document.getElementById("steamName").textContent = "—";
+                document.getElementById("steamLevel").textContent = "—";
+                document.getElementById("steamCountry").textContent = "—";
+                document.getElementById("linkSteamBtn").style.display = "block";
+                document.getElementById("unlinkSteamBtn").style.display = "none";
             }
         }
 
-        // ========== НАВИГАЦИЯ ==========
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.getElementById(`tab-${tabId}`).classList.add('active');
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            document.querySelector(`.nav-item[data-tab="${tabId}"]`).classList.add('active');
+        function updateTelegramTab() {
+            const user = getCurrentUser();
+            if (user && user.telegram) {
+                document.getElementById("tgId").textContent = user.telegram.id || "—";
+                document.getElementById("tgFirstName").textContent = user.telegram.first_name || "—";
+                document.getElementById("tgLastName").textContent = user.telegram.last_name || "—";
+                document.getElementById("tgUsername").textContent = user.telegram.username || "—";
+                document.getElementById("tgLanguage").textContent = user.telegram.language_code || "—";
+                document.getElementById("linkTgBtn").style.display = "none";
+                document.getElementById("unlinkTgBtn").style.display = "block";
+            } else {
+                document.getElementById("tgId").textContent = "не привязан";
+                document.getElementById("tgFirstName").textContent = "—";
+                document.getElementById("tgLastName").textContent = "—";
+                document.getElementById("tgUsername").textContent = "—";
+                document.getElementById("tgLanguage").textContent = "—";
+                document.getElementById("linkTgBtn").style.display = "block";
+                document.getElementById("unlinkTgBtn").style.display = "none";
+            }
+        }
+
+        function updateAllUI() {
+            updateBalanceDisplay();
+            updateSteamTab();
+            updateTelegramTab();
+        }
+
+        // ========== ВХОД ЧЕРЕЗ STEAM (демо-имитация) ==========
+        document.getElementById("steamLoginBtn").addEventListener("click", () => {
+            // В реальном проекте здесь был бы редирект на Steam OpenID
+            tg.showAlert("steam авторизация\n\nвведите данные для демо входа");
             
-            // Скрываем рулетку при переключении
-            if (tabId !== 'cases') {
-                rouletteArea.style.display = "none";
-                openCaseBtn.disabled = false;
-                openCaseBtn.textContent = "🎲 ОТКРЫТЬ КЕЙС";
+            const mockSteamId = prompt("steam id (76561198000000000)");
+            const mockSteamName = prompt("никнейм в steam");
+            
+            if (mockSteamId && mockSteamName) {
+                const userId = "steam_" + mockSteamId;
+                if (!users[userId]) {
+                    users[userId] = {
+                        balance: 100,
+                        steam: {
+                            id: mockSteamId,
+                            name: mockSteamName,
+                            level: Math.floor(Math.random() * 50) + 1,
+                            country: "ru"
+                        },
+                        telegram: null
+                    };
+                } else {
+                    if (!users[userId].steam) {
+                        users[userId].steam = {
+                            id: mockSteamId,
+                            name: mockSteamName,
+                            level: Math.floor(Math.random() * 50) + 1,
+                            country: "ru"
+                        };
+                    }
+                }
+                saveUsers();
+                currentUserId = userId;
+                localStorage.setItem("rusty_current_user", currentUserId);
+                
+                document.getElementById("loginScreen").style.display = "none";
+                document.getElementById("mainMenu").style.display = "block";
+                updateAllUI();
+                tg.showAlert(`добро пожаловать, ${mockSteamName}`);
             }
+        });
+
+        // ========== ВХОД ЧЕРЕЗ TELEGRAM ==========
+        document.getElementById("telegramLoginBtn").addEventListener("click", () => {
+            const tgUser = tg.initDataUnsafe?.user;
+            if (tgUser && tgUser.id) {
+                const userId = "tg_" + tgUser.id;
+                if (!users[userId]) {
+                    users[userId] = {
+                        balance: 100,
+                        steam: null,
+                        telegram: {
+                            id: tgUser.id,
+                            first_name: tgUser.first_name || "",
+                            last_name: tgUser.last_name || "",
+                            username: tgUser.username || "",
+                            language_code: tgUser.language_code || "ru"
+                        }
+                    };
+                } else {
+                    if (!users[userId].telegram) {
+                        users[userId].telegram = {
+                            id: tgUser.id,
+                            first_name: tgUser.first_name || "",
+                            last_name: tgUser.last_name || "",
+                            username: tgUser.username || "",
+                            language_code: tgUser.language_code || "ru"
+                        };
+                    }
+                }
+                saveUsers();
+                currentUserId = userId;
+                localStorage.setItem("rusty_current_user", currentUserId);
+                
+                document.getElementById("loginScreen").style.display = "none";
+                document.getElementById("mainMenu").style.display = "block";
+                updateAllUI();
+                tg.showAlert(`добро пожаловать, ${tgUser.first_name || "пользователь"}`);
+            } else {
+                tg.showAlert("ошибка: данные telegram не получены");
+            }
+        });
+
+        // ========== ПРИВЯЗКА STEAM (из меню) ==========
+        document.getElementById("linkSteamBtn").addEventListener("click", () => {
+            const user = getCurrentUser();
+            if (!user) return;
+            
+            const mockSteamId = prompt("steam id");
+            const mockSteamName = prompt("никнейм в steam");
+            
+            if (mockSteamId && mockSteamName) {
+                user.steam = {
+                    id: mockSteamId,
+                    name: mockSteamName,
+                    level: Math.floor(Math.random() * 50) + 1,
+                    country: "ru"
+                };
+                saveUsers();
+                updateSteamTab();
+                tg.showAlert("steam аккаунт привязан");
+            }
+        });
+
+        document.getElementById("unlinkSteamBtn").addEventListener("click", () => {
+            const user = getCurrentUser();
+            if (user) {
+                user.steam = null;
+                saveUsers();
+                updateSteamTab();
+                tg.showAlert("steam аккаунт отвязан");
+            }
+        });
+
+        // ========== ПРИВЯЗКА TELEGRAM ==========
+        document.getElementById("linkTgBtn").addEventListener("click", () => {
+            const tgUser = tg.initDataUnsafe?.user;
+            const user = getCurrentUser();
+            if (!user) return;
+            
+            if (tgUser && tgUser.id) {
+                user.telegram = {
+                    id: tgUser.id,
+                    first_name: tgUser.first_name || "",
+                    last_name: tgUser.last_name || "",
+                    username: tgUser.username || "",
+                    language_code: tgUser.language_code || "ru"
+                };
+                saveUsers();
+                updateTelegramTab();
+                tg.showAlert("telegram аккаунт привязан");
+            } else {
+                tg.showAlert("ошибка привязки");
+            }
+        });
+
+        document.getElementById("unlinkTgBtn").addEventListener("click", () => {
+            const user = getCurrentUser();
+            if (user) {
+                user.telegram = null;
+                saveUsers();
+                updateTelegramTab();
+                tg.showAlert("telegram аккаунт отвязан");
+            }
+        });
+
+        // ========== ВЫХОД ==========
+        function logout() {
+            currentUserId = null;
+            localStorage.removeItem("rusty_current_user");
+            document.getElementById("loginScreen").style.display = "flex";
+            document.getElementById("mainMenu").style.display = "none";
+            tg.showAlert("вы вышли из аккаунта");
         }
 
-        document.querySelectorAll('.nav-item').forEach(item => {
+        document.getElementById("logoutNavBtn").addEventListener("click", logout);
+
+        // ========== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК ==========
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+            
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`.nav-item[data-tab="${tabId}"]`).classList.add('active');
+        }
+
+        document.querySelectorAll('.nav-item[data-tab]').forEach(item => {
             item.addEventListener('click', () => switchTab(item.dataset.tab));
         });
 
-        startBtn.addEventListener('click', () => {
-            loginScreen.style.display = 'none';
-            mainMenu.style.display = 'block';
-            updateHistory();
+        // ========== ОСТАЛЬНЫЕ ФУНКЦИИ ==========
+        document.getElementById("topupBtn").addEventListener("click", () => {
+            tg.sendData(JSON.stringify({ action: "topup", user_id: currentUserId }));
+            tg.showAlert("пополнение баланса\n\nпереведите telegram stars на @wasxr\nукажите ваш id: " + currentUserId);
         });
 
-        openCaseBtn.addEventListener('click', openCase);
-
-        topupBtn.addEventListener('click', () => {
-            tg.sendData(JSON.stringify({ action: "topup", user_id: user.id }));
-            tg.showAlert("💎 Пополнение баланса\n\nНапишите @DobeworksSupport для оплаты в Telegram Stars");
+        document.getElementById("downloadGameBtn").addEventListener("click", () => {
+            tg.showAlert("скачивание начнется через браузер");
+            window.open("https://example.com/download/rusty_project.zip", "_blank");
         });
 
-        saveSteamBtn.addEventListener('click', () => {
-            const link = steamLinkInput.value.trim();
-            if (link) {
-                localStorage.setItem("steamLink", link);
-                steamLink = link;
-                tg.showAlert("✅ Ссылка сохранена!");
-            } else {
-                tg.showAlert("❌ Введите ссылку для обмена");
-            }
+        document.getElementById("creatorLink").addEventListener("click", () => {
+            window.open("https://t.me/wasxr", "_blank");
         });
 
-        // Инициализация
-        updateBalance();
-        updateStats();
-        if (steamLink) steamLinkInput.value = steamLink;
-        tg.MainButton.hide();
+        document.getElementById("communityLink").addEventListener("click", () => {
+            window.open("https://t.me/rustyrust", "_blank");
+        });
+
+        // ========== ПРОВЕРКА АВТОРИЗАЦИИ ПРИ ЗАГРУЗКЕ ==========
+        if (currentUserId && users[currentUserId]) {
+            document.getElementById("loginScreen").style.display = "none";
+            document.getElementById("mainMenu").style.display = "block";
+            updateAllUI();
+        } else {
+            document.getElementById("loginScreen").style.display = "flex";
+            document.getElementById("mainMenu").style.display = "none";
+        }
     </script>
 </body>
 </html>
