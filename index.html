@@ -14,9 +14,16 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', Helvetica, Arial, sans-serif;
-            background: #0a1a2e;
+            background: #ffffff;
             min-height: 100vh;
-            color: #e0e0e0;
+            color: #1c1c1e;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #000000;
+                color: #ffffff;
+            }
         }
 
         .container {
@@ -34,98 +41,84 @@
             animation: fadeIn 0.4s ease-out;
         }
 
-        /* Экран входа */
-        .login-screen {
+        /* Экран приветствия iOS */
+        .welcome-screen {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            background: #ffffff;
         }
 
-        .login-card {
-            background: #0d2a3e;
-            border-radius: 24px;
-            padding: 32px 24px;
-            border: 1px solid #1e4d6f;
-            width: 100%;
+        @media (prefers-color-scheme: dark) {
+            .welcome-screen {
+                background: #000000;
+            }
         }
 
-        .logo {
+        .welcome-card {
             text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .logo-icon {
-            font-size: 32px;
-            font-weight: 700;
-            color: #2eccfa;
-            letter-spacing: 2px;
-        }
-
-        .logo-text {
-            font-size: 20px;
-            font-weight: 600;
-            color: #2eccfa;
-            margin-top: 8px;
-        }
-
-        .logo-sub {
-            font-size: 12px;
-            color: #6c8ea0;
-            margin-top: 4px;
-        }
-
-        .input-group {
-            margin-bottom: 16px;
-        }
-
-        .input-field {
             width: 100%;
-            padding: 14px 16px;
-            background: #0a1a2e;
-            border: 1px solid #1e4d6f;
-            border-radius: 12px;
-            font-size: 16px;
-            color: #e0e0e0;
-            font-family: inherit;
         }
 
-        .input-field:focus {
-            outline: none;
-            border-color: #2eccfa;
+        .welcome-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
+            border-radius: 60px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.3);
         }
 
-        .input-field::placeholder {
-            color: #4a6a7a;
+        .welcome-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .btn {
-            border: none;
-            border-radius: 12px;
-            padding: 14px 20px;
-            font-size: 16px;
+        .welcome-avatar span {
+            font-size: 52px;
+            font-weight: 500;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .welcome-greeting {
+            font-size: 28px;
             font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .welcome-name {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #007aff;
+        }
+
+        .welcome-btn {
+            background: #007aff;
+            border: none;
+            border-radius: 14px;
+            padding: 16px 20px;
+            font-size: 17px;
+            font-weight: 600;
+            color: white;
             width: 100%;
             cursor: pointer;
             transition: all 0.2s;
-            margin-top: 12px;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
         }
 
-        .btn-primary {
-            background: #2eccfa;
-            color: #0a1a2e;
-        }
-
-        .btn-primary:active {
-            background: #1a9fd0;
-            transform: scale(0.98);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid #2eccfa;
-            color: #2eccfa;
+        .welcome-btn:active {
+            background: #0051a8;
+            transform: scale(0.97);
         }
 
         /* Главное меню */
@@ -133,7 +126,7 @@
             display: none;
         }
 
-        /* Нижняя навигация */
+        /* Нижняя навигация iOS */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -141,11 +134,19 @@
             right: 0;
             max-width: 400px;
             margin: 0 auto;
-            background: #0d2a3e;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-around;
-            padding: 12px 20px;
-            border-top: 1px solid #1e4d6f;
+            padding: 10px 20px 20px;
+            border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .bottom-nav {
+                background: rgba(0, 0, 0, 0.95);
+                border-top-color: rgba(255, 255, 255, 0.1);
+            }
         }
 
         .nav-item {
@@ -153,14 +154,18 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
-            font-size: 12px;
-            color: #6c8ea0;
+            font-size: 11px;
+            color: #8e8e93;
             cursor: pointer;
             transition: color 0.2s;
         }
 
         .nav-item.active {
-            color: #2eccfa;
+            color: #007aff;
+        }
+
+        .nav-icon {
+            font-size: 22px;
         }
 
         /* Контент вкладок */
@@ -175,50 +180,51 @@
 
         /* Карточки */
         .card {
-            background: #0d2a3e;
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 16px;
-            border: 1px solid #1e4d6f;
+            background: #f2f2f7;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .card {
+                background: #1c1c1e;
+            }
         }
 
         .card-title {
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 600;
-            color: #2eccfa;
-            margin-bottom: 16px;
-            letter-spacing: 1px;
+            margin-bottom: 12px;
         }
 
         .balance-card {
-            background: #0d2a3e;
+            background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
             border-radius: 20px;
             padding: 20px;
-            margin-bottom: 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid #1e4d6f;
+            margin-bottom: 20px;
+            color: white;
         }
 
         .balance-label {
-            font-size: 13px;
-            color: #6c8ea0;
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 8px;
         }
 
         .balance-value {
-            font-size: 32px;
+            font-size: 44px;
             font-weight: 700;
-            color: #2eccfa;
+            margin-bottom: 16px;
         }
 
         .topup-btn {
-            background: #2eccfa;
+            background: rgba(255, 255, 255, 0.2);
             border: none;
             border-radius: 30px;
             padding: 10px 20px;
             font-weight: 600;
-            color: #0a1a2e;
+            color: white;
             cursor: pointer;
             font-size: 14px;
         }
@@ -232,50 +238,66 @@
         }
 
         .filter-btn {
-            background: #0a1a2e;
-            border: 1px solid #1e4d6f;
+            background: #f2f2f7;
+            border: none;
             border-radius: 20px;
             padding: 8px 16px;
             font-size: 13px;
-            color: #6c8ea0;
+            color: #007aff;
             cursor: pointer;
             transition: all 0.2s;
         }
 
+        @media (prefers-color-scheme: dark) {
+            .filter-btn {
+                background: #1c1c1e;
+            }
+        }
+
         .filter-btn.active {
-            background: #2eccfa;
-            border-color: #2eccfa;
-            color: #0a1a2e;
+            background: #007aff;
+            color: white;
         }
 
         /* Список скинов */
         .skin-item {
-            background: #0d2a3e;
-            border-radius: 16px;
+            background: #f2f2f7;
+            border-radius: 14px;
             padding: 12px;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 12px;
-            border: 1px solid #1e4d6f;
             cursor: pointer;
             transition: all 0.2s;
         }
 
+        @media (prefers-color-scheme: dark) {
+            .skin-item {
+                background: #1c1c1e;
+            }
+        }
+
         .skin-item:active {
             transform: scale(0.98);
-            background: #123a52;
+            opacity: 0.8;
         }
 
         .skin-icon {
             width: 56px;
             height: 56px;
-            background: #0a1a2e;
+            background: #e5e5ea;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .skin-icon {
+                background: #2c2c2e;
+            }
         }
 
         .skin-icon img {
@@ -289,14 +311,13 @@
         }
 
         .skin-name {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
             margin-bottom: 4px;
         }
 
         .skin-rarity {
-            font-size: 11px;
-            text-transform: uppercase;
+            font-size: 12px;
         }
 
         .rarity-industrial { color: #5e7c9c; }
@@ -304,35 +325,45 @@
         .rarity-restricted { color: #8847ff; }
         .rarity-classified { color: #d32ee6; }
         .rarity-covert { color: #eb4b4b; }
-        .rarity-base { color: #6c8ea0; }
 
         .skin-price {
             font-size: 16px;
             font-weight: 700;
-            color: #2eccfa;
+            color: #007aff;
         }
 
         /* Инвентарь */
         .inventory-item {
-            background: #0d2a3e;
-            border-radius: 16px;
+            background: #f2f2f7;
+            border-radius: 14px;
             padding: 12px;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 12px;
-            border: 1px solid #1e4d6f;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .inventory-item {
+                background: #1c1c1e;
+            }
         }
 
         .inventory-icon {
             width: 48px;
             height: 48px;
-            background: #0a1a2e;
+            background: #e5e5ea;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .inventory-icon {
+                background: #2c2c2e;
+            }
         }
 
         .inventory-icon img {
@@ -346,111 +377,155 @@
         }
 
         .inventory-name {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
             margin-bottom: 2px;
         }
 
         .inventory-date {
-            font-size: 10px;
-            color: #6c8ea0;
+            font-size: 11px;
+            color: #8e8e93;
         }
 
-        /* Профиль */
+        /* Профиль iOS */
         .profile-header {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: #0d2a3e;
-            border-radius: 24px;
+            background: #f2f2f7;
+            border-radius: 20px;
             padding: 24px;
             margin-bottom: 20px;
-            border: 1px solid #1e4d6f;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .profile-header {
+                background: #1c1c1e;
+            }
         }
 
         .profile-icon {
             width: 80px;
             height: 80px;
-            background: #0a1a2e;
+            background: #e5e5ea;
             border-radius: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 12px;
-            border: 2px solid #2eccfa;
+            border: 2px solid #007aff;
+            overflow: hidden;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .profile-icon {
+                background: #2c2c2e;
+            }
+        }
+
+        .profile-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .profile-icon span {
             font-size: 36px;
             font-weight: 600;
-            color: #2eccfa;
+            color: #007aff;
         }
 
         .profile-name {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 600;
-            color: #ffffff;
         }
 
         .info-row {
             display: flex;
             justify-content: space-between;
             padding: 12px 0;
-            border-bottom: 1px solid #1e4d6f;
+            border-bottom: 0.5px solid #c6c6c8;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .info-row {
+                border-bottom-color: #38383a;
+            }
         }
 
         .info-label {
-            color: #6c8ea0;
-            font-size: 14px;
+            color: #8e8e93;
+            font-size: 15px;
         }
 
         .info-value {
             font-weight: 500;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .logout-btn {
-            background: transparent;
-            border: 1px solid #ff5e5e;
-            color: #ff5e5e;
-            border-radius: 30px;
-            padding: 12px;
+            background: #ff3b30;
+            border: none;
+            border-radius: 14px;
+            padding: 14px;
             font-weight: 600;
+            color: white;
             width: 100%;
             cursor: pointer;
             margin-top: 16px;
         }
 
+        .logout-btn:active {
+            opacity: 0.8;
+            transform: scale(0.97);
+        }
+
         .trade-input {
             width: 100%;
-            padding: 12px;
-            background: #0a1a2e;
-            border: 1px solid #1e4d6f;
-            border-radius: 12px;
-            color: #e0e0e0;
+            padding: 14px;
+            background: #f2f2f7;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-family: inherit;
             margin-bottom: 12px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .trade-input {
+                background: #1c1c1e;
+                color: white;
+            }
+        }
+
+        .trade-input:focus {
+            outline: none;
+            background: #e5e5ea;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid #007aff;
+            border-radius: 14px;
+            padding: 12px;
+            font-weight: 600;
+            color: #007aff;
+            width: 100%;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <div class="container" id="app">
-        <!-- Экран входа -->
-        <div id="loginScreen" class="login-screen fade-in">
-            <div class="login-card">
-                <div class="logo">
-                    <div class="logo-icon">CS2 MARKET</div>
-                    <div class="logo-text">DOBEWORKS</div>
-                    <div class="logo-sub">skins marketplace</div>
+        <!-- Экран приветствия iOS -->
+        <div id="welcomeScreen" class="welcome-screen fade-in">
+            <div class="welcome-card">
+                <div class="welcome-avatar" id="welcomeAvatar">
+                    <span id="welcomeInitial">R</span>
                 </div>
-                <div class="input-group">
-                    <input type="text" id="loginUsername" class="input-field" placeholder="login">
-                </div>
-                <div class="input-group">
-                    <input type="password" id="loginPassword" class="input-field" placeholder="password">
-                </div>
-                <button class="btn btn-primary" id="loginBtn">sign in</button>
-                <button class="btn btn-secondary" id="registerBtn">sign up</button>
-                <button class="btn btn-secondary" id="telegramAuthBtn" style="margin-top: 8px;">telegram login</button>
+                <div class="welcome-greeting" id="welcomeGreeting">Здравствуйте,</div>
+                <div class="welcome-name" id="welcomeName">Игрок</div>
+                <button class="welcome-btn" id="enterBtn">Начать</button>
             </div>
         </div>
 
@@ -460,19 +535,19 @@
             <div class="tab-content active" id="tab-market">
                 <div class="balance-card">
                     <div class="balance-info">
-                        <div class="balance-label">balance</div>
+                        <div class="balance-label">Твой баланс</div>
                         <div class="balance-value" id="balanceValue">0</div>
                     </div>
-                    <button class="topup-btn" id="topupBtn">add stars</button>
+                    <button class="topup-btn" id="topupBtn">Пополнить Stars</button>
                 </div>
 
                 <div class="filters">
-                    <button class="filter-btn active" data-rarity="all">all</button>
-                    <button class="filter-btn" data-rarity="industrial">industrial</button>
-                    <button class="filter-btn" data-rarity="milspec">milspec</button>
-                    <button class="filter-btn" data-rarity="restricted">restricted</button>
-                    <button class="filter-btn" data-rarity="classified">classified</button>
-                    <button class="filter-btn" data-rarity="covert">covert</button>
+                    <button class="filter-btn active" data-rarity="all">Все</button>
+                    <button class="filter-btn" data-rarity="industrial">Industrial</button>
+                    <button class="filter-btn" data-rarity="milspec">Mil-Spec</button>
+                    <button class="filter-btn" data-rarity="restricted">Restricted</button>
+                    <button class="filter-btn" data-rarity="classified">Classified</button>
+                    <button class="filter-btn" data-rarity="covert">Covert</button>
                 </div>
 
                 <div id="skinsList"></div>
@@ -481,7 +556,7 @@
             <!-- Вкладка ИНВЕНТАРЬ -->
             <div class="tab-content" id="tab-inventory">
                 <div class="card">
-                    <div class="card-title">my skins</div>
+                    <div class="card-title">Мои скины</div>
                     <div id="inventoryList"></div>
                 </div>
             </div>
@@ -489,42 +564,51 @@
             <!-- Вкладка ПРОФИЛЬ -->
             <div class="tab-content" id="tab-profile">
                 <div class="profile-header">
-                    <div class="profile-icon">
+                    <div class="profile-icon" id="profileIcon">
                         <span id="profileInitial">U</span>
                     </div>
                     <div class="profile-name" id="profileUsername">user</div>
                 </div>
 
                 <div class="card">
-                    <div class="card-title">statistics</div>
+                    <div class="card-title">Статистика</div>
                     <div class="info-row">
-                        <span class="info-label">total spent</span>
+                        <span class="info-label">Потрачено</span>
                         <span class="info-value" id="totalSpent">0 stars</span>
                     </div>
                     <div class="info-row">
-                        <span class="info-label">items owned</span>
+                        <span class="info-label">Предметов</span>
                         <span class="info-value" id="itemsOwned">0</span>
                     </div>
                     <div class="info-row">
-                        <span class="info-label">member since</span>
+                        <span class="info-label">Аккаунт с</span>
                         <span class="info-value" id="memberSince">—</span>
                     </div>
                 </div>
 
                 <div class="card">
-                    <div class="card-title">steam trade link</div>
+                    <div class="card-title">Steam Trade Link</div>
                     <input type="text" id="tradeLinkInput" class="trade-input" placeholder="https://steamcommunity.com/tradeoffer/...">
-                    <button class="btn btn-secondary" id="saveTradeLinkBtn">save</button>
+                    <button class="btn-secondary" id="saveTradeLinkBtn">Сохранить</button>
                 </div>
 
-                <button class="logout-btn" id="logoutBtn">logout</button>
+                <button class="logout-btn" id="logoutBtn">Выйти</button>
             </div>
 
             <!-- Нижняя навигация -->
             <div class="bottom-nav">
-                <div class="nav-item active" data-tab="market">market</div>
-                <div class="nav-item" data-tab="inventory">inventory</div>
-                <div class="nav-item" data-tab="profile">profile</div>
+                <div class="nav-item active" data-tab="market">
+                    <div class="nav-icon">🛍️</div>
+                    <span>Маркет</span>
+                </div>
+                <div class="nav-item" data-tab="inventory">
+                    <div class="nav-icon">📦</div>
+                    <span>Инвентарь</span>
+                </div>
+                <div class="nav-item" data-tab="profile">
+                    <div class="nav-icon">👤</div>
+                    <span>Профиль</span>
+                </div>
             </div>
         </div>
     </div>
@@ -534,12 +618,44 @@
         tg.ready();
         tg.expand();
 
-        // ========== БАЗА ДАННЫХ ==========
-        let users = JSON.parse(localStorage.getItem("cs2_users")) || {};
-        let currentUser = localStorage.getItem("cs2_current_user") || null;
+        // ========== ПОЛУЧАЕМ ДАННЫЕ ПОЛЬЗОВАТЕЛЯ ИЗ TELEGRAM ==========
+        let tgUser = tg.initDataUnsafe?.user;
+        
+        if (!tgUser || !tgUser.id) {
+            tgUser = {
+                first_name: "Игрок",
+                last_name: "",
+                id: Date.now(),
+                photo_url: null,
+                username: "player"
+            };
+        }
+
+        const userId = "user_" + tgUser.id;
+        const firstName = tgUser.first_name || "Игрок";
+        const fullName = `${firstName} ${tgUser.last_name || ""}`.trim();
+        const initial = firstName.charAt(0).toUpperCase();
+        const userPhotoUrl = tgUser.photo_url;
+
+        // ========== ЗАГРУЗКА ДАННЫХ ИЗ STORAGE ==========
+        let users = JSON.parse(localStorage.getItem("cs2_users_extended")) || {};
+        
+        if (!users[userId]) {
+            users[userId] = {
+                username: fullName,
+                balance: 150,
+                totalSpent: 0,
+                inventory: [],
+                joinDate: new Date().toLocaleDateString(),
+                tradeLink: ""
+            };
+            localStorage.setItem("cs2_users_extended", JSON.stringify(users));
+        }
+        
+        let currentUserData = users[userId];
         let currentRarityFilter = "all";
 
-        // ========== СКИНЫ С РЕАЛЬНЫМИ КАРТИНКАМИ STEAM CDN ==========
+        // ========== СКИНЫ С РЕАЛЬНЫМИ КАРТИНКАМИ ==========
         const skinsCatalog = [
             { name: "AK-47 | Redline", rarity: "classified", price: 450, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJYz1H4-G3koG0hPz2N7LEgn8u7MxkhbmRr4z2jQ2xrxYtZ2r6ddOXIQRrZA-G8wO8x-bv1Ja47cvJynXo-9Wln3VvsQ" },
             { name: "AWP | Dragon Lore", rarity: "covert", price: 5000, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FA957fPLQwJM9d23h5O0m_7zOq_um2pD7Mkgi7yS9IjxjwW3_EdoYz3zdoKQJAdrMl6G8wXst7zv0pO56MnNnHtkM7A" },
@@ -548,21 +664,46 @@
             { name: "Desert Eagle | Blaze", rarity: "restricted", price: 150, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0v73dTxD6d6xq5OYqPHDPr7Vn2VU7cB4lLuR9I3w0Qzl-hZsZGn6doeeJlE9Yl-F-wW5xLrt0pS66Z2ewCQ27g" },
             { name: "AK-47 | Bloodsport", rarity: "classified", price: 380, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhzwc3acitR09K5lZm0nvL4NbrQkWRY781n2u6Sp9iljVbl_BU-Yzr0cI7FJAM4Yl6G8wXtkLu70Mbpu8yZnSg1ujIuuw" },
             { name: "M4A1-S | Printstream", rarity: "covert", price: 800, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H6-K3m5S0n_rLPoPck2NpgIhz2-2QoI2hjwGyr0NsYDr7dNLEJgI2ZAyE_AO_w-a9gMTquZSbyi5osiF9wA" },
-            { name: "AWP | Asiimov", rarity: "classified", price: 520, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FA957fPLQwJM9d23h5O0m_7zOq_um2pD7Mkgi7yS9IjxjwW3_EdoYz3zdoKQJAdrMl6G8wXst7zv0pO56MnNnHtkM7A" },
             { name: "SSG 08 | Death Strike", rarity: "milspec", price: 45, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PvQaTJY09SzlZaS2aX3MOvSlzlQucdy2LqU9NmnjAzl_UJoYmqldYSTIQI_NV_X81bvkufxxcjryPo2vmI" },
-            { name: "P90 | Asiimov", rarity: "restricted", price: 85, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FA957fPLQwJM9d23h5O0m_7zOq_um2pD7Mkgi7yS9IjxjwW3_EdoYz3zdoKQJAdrMl6G8wXst7zv0pO56MnNnHtkM7A" },
             { name: "Glock-18 | Water Elemental", rarity: "milspec", price: 55, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0v73dTxD6d6xq5OYqPHDPr7Vn2VU7cB4lLuR9I3w0Qzl-hZsZGn6doeeJlE9Yl-F-wW5xLrt0pS66Z2ewCQ27g" },
             { name: "MAG-7 | Heat", rarity: "industrial", price: 20, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhzwc3acitR09K5lZm0nvL4NbrQkWRY781n2u6Sp9iljVbl_BU-Yzr0cI7FJAM4Yl6G8wXtkLu70Mbpu8yZnSg1ujIuuw" }
         ];
 
-        // ========== ФУНКЦИИ ==========
-        function saveUsers() {
-            localStorage.setItem("cs2_users", JSON.stringify(users));
+        // ========== ФУНКЦИИ ОБНОВЛЕНИЯ ==========
+        function saveUserData() {
+            users[userId] = currentUserData;
+            localStorage.setItem("cs2_users_extended", JSON.stringify(users));
         }
 
-        function getCurrentUserData() {
-            if (currentUser && users[currentUser]) return users[currentUser];
-            return null;
+        function updateBalance() {
+            document.getElementById("balanceValue").textContent = currentUserData.balance;
+        }
+
+        function updateProfile() {
+            document.getElementById("profileInitial").textContent = currentUserData.username.charAt(0).toUpperCase();
+            document.getElementById("profileUsername").textContent = currentUserData.username;
+            document.getElementById("totalSpent").textContent = currentUserData.totalSpent + " stars";
+            document.getElementById("itemsOwned").textContent = currentUserData.inventory.length;
+            document.getElementById("memberSince").textContent = currentUserData.joinDate;
+            document.getElementById("tradeLinkInput").value = currentUserData.tradeLink || "";
+        }
+
+        function updateInventory() {
+            const inventoryList = document.getElementById("inventoryList");
+            if (!currentUserData.inventory || currentUserData.inventory.length === 0) {
+                inventoryList.innerHTML = '<div style="text-align: center; color: #8e8e93; padding: 40px;">У вас пока нет скинов</div>';
+                return;
+            }
+            inventoryList.innerHTML = currentUserData.inventory.map(item => `
+                <div class="inventory-item">
+                    <div class="inventory-icon"><img src="${item.iconUrl}" onerror="this.src='https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PvQaTJY09SzlZaS2aX3MOvSlzlQucdy2LqU9NmnjAzl_UJoYmqldYSTIQI_NV_X81bvkufxxcjryPo2vmI'"></div>
+                    <div class="inventory-info">
+                        <div class="inventory-name">${item.name}</div>
+                        <div class="inventory-date">${item.date || "куплен"}</div>
+                    </div>
+                    <div class="skin-price">${item.price} stars</div>
+                </div>
+            `).join('');
         }
 
         function getRarityClass(rarity) {
@@ -572,48 +713,8 @@
                 case "restricted": return "rarity-restricted";
                 case "classified": return "rarity-classified";
                 case "covert": return "rarity-covert";
-                default: return "rarity-base";
+                default: return "";
             }
-        }
-
-        function updateBalance() {
-            const user = getCurrentUserData();
-            if (user) {
-                document.getElementById("balanceValue").textContent = user.balance || 0;
-            }
-        }
-
-        function updateProfile() {
-            const user = getCurrentUserData();
-            if (user) {
-                document.getElementById("profileInitial").textContent = user.username.charAt(0).toUpperCase();
-                document.getElementById("profileUsername").textContent = user.username;
-                document.getElementById("totalSpent").textContent = (user.totalSpent || 0) + " stars";
-                document.getElementById("itemsOwned").textContent = (user.inventory?.length || 0);
-                document.getElementById("memberSince").textContent = user.joinDate || "2024";
-                document.getElementById("tradeLinkInput").value = user.tradeLink || "";
-            }
-        }
-
-        function updateInventory() {
-            const user = getCurrentUserData();
-            const inventoryList = document.getElementById("inventoryList");
-            if (!user || !user.inventory || user.inventory.length === 0) {
-                inventoryList.innerHTML = '<div style="text-align: center; color: #6c8ea0; padding: 40px;">no skins yet</div>';
-                return;
-            }
-            inventoryList.innerHTML = user.inventory.map((item, idx) => `
-                <div class="inventory-item">
-                    <div class="inventory-icon">
-                        <img src="${item.iconUrl}" onerror="this.src='https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PvQaTJY09SzlZaS2aX3MOvSlzlQucdy2LqU9NmnjAzl_UJoYmqldYSTIQI_NV_X81bvkufxxcjryPo2vmI'">
-                    </div>
-                    <div class="inventory-info">
-                        <div class="inventory-name">${item.name}</div>
-                        <div class="inventory-date">${item.date || "purchased"}</div>
-                    </div>
-                    <div class="skin-price">${item.price} stars</div>
-                </div>
-            `).join('');
         }
 
         function renderMarket() {
@@ -624,9 +725,7 @@
             const skinsList = document.getElementById("skinsList");
             skinsList.innerHTML = filtered.map(skin => `
                 <div class="skin-item" data-name="${skin.name}" data-price="${skin.price}" data-iconurl="${skin.iconUrl}" data-rarity="${skin.rarity}">
-                    <div class="skin-icon">
-                        <img src="${skin.iconUrl}" onerror="this.src='https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PvQaTJY09SzlZaS2aX3MOvSlzlQucdy2LqU9NmnjAzl_UJoYmqldYSTIQI_NV_X81bvkufxxcjryPo2vmI'">
-                    </div>
+                    <div class="skin-icon"><img src="${skin.iconUrl}" onerror="this.src='https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PvQaTJY09SzlZaS2aX3MOvSlzlQucdy2LqU9NmnjAzl_UJoYmqldYSTIQI_NV_X81bvkufxxcjryPo2vmI'"></div>
                     <div class="skin-info">
                         <div class="skin-name">${skin.name}</div>
                         <div class="skin-rarity ${getRarityClass(skin.rarity)}">${skin.rarity}</div>
@@ -647,138 +746,92 @@
         }
 
         function buySkin(name, price, iconUrl, rarity) {
-            const user = getCurrentUserData();
-            if (!user) return;
-            
-            if (user.balance >= price) {
-                user.balance -= price;
-                user.totalSpent = (user.totalSpent || 0) + price;
-                if (!user.inventory) user.inventory = [];
-                user.inventory.push({
+            if (currentUserData.balance >= price) {
+                // Списание баланса
+                currentUserData.balance -= price;
+                currentUserData.totalSpent += price;
+                
+                // Добавление в инвентарь
+                if (!currentUserData.inventory) currentUserData.inventory = [];
+                currentUserData.inventory.push({
                     name: name,
                     price: price,
                     iconUrl: iconUrl,
                     rarity: rarity,
                     date: new Date().toLocaleDateString()
                 });
-                saveUsers();
+                
+                saveUserData();
                 updateBalance();
                 updateInventory();
                 updateProfile();
-                tg.showAlert(`purchased ${name} for ${price} stars`);
-                tg.sendData(JSON.stringify({ action: "purchase", skin: name, price: price }));
+                
+                tg.showAlert(`✅ Вы купили ${name} за ${price} stars!`);
+                
+                // Отправка данных боту для подтверждения (опционально)
+                tg.sendData(JSON.stringify({
+                    action: "purchase",
+                    skin: name,
+                    price: price,
+                    user_id: userId
+                }));
             } else {
-                tg.showAlert(`not enough stars! need ${price}, you have ${user.balance}`);
+                tg.showAlert(`❌ Не хватает stars!\nНужно: ${price}, у вас: ${currentUserData.balance}`);
             }
         }
 
-        // ========== АВТОРИЗАЦИЯ ==========
-        document.getElementById("loginBtn").addEventListener("click", () => {
-            const username = document.getElementById("loginUsername").value.trim();
-            const password = document.getElementById("loginPassword").value.trim();
-            if (!username || !password) {
-                tg.showAlert("enter login and password");
-                return;
+        // ========== НАСТРОЙКА ЭКРАНА ПРИВЕТСТВИЯ ==========
+        function setupWelcomeScreen() {
+            document.getElementById("welcomeGreeting").textContent = "Здравствуйте,";
+            document.getElementById("welcomeName").textContent = firstName;
+            document.getElementById("welcomeInitial").textContent = initial;
+            
+            if (userPhotoUrl) {
+                const img = document.createElement('img');
+                img.src = userPhotoUrl;
+                const avatarDiv = document.getElementById("welcomeAvatar");
+                avatarDiv.innerHTML = '';
+                avatarDiv.appendChild(img);
             }
-            if (users[username] && users[username].password === password) {
-                currentUser = username;
-                localStorage.setItem("cs2_current_user", currentUser);
-                document.getElementById("loginScreen").style.display = "none";
-                document.getElementById("mainMenu").style.display = "block";
-                updateBalance();
-                updateInventory();
-                updateProfile();
-                tg.showAlert(`welcome back, ${username}`);
-            } else {
-                tg.showAlert("invalid login or password");
-            }
-        });
+        }
 
-        document.getElementById("registerBtn").addEventListener("click", () => {
-            const username = document.getElementById("loginUsername").value.trim();
-            const password = document.getElementById("loginPassword").value.trim();
-            if (!username || !password) {
-                tg.showAlert("enter login and password");
-                return;
-            }
-            if (users[username]) {
-                tg.showAlert("user already exists");
-                return;
-            }
-            users[username] = {
-                password: password,
-                balance: 200,
-                totalSpent: 0,
-                inventory: [],
-                joinDate: new Date().toLocaleDateString(),
-                tradeLink: ""
-            };
-            saveUsers();
-            currentUser = username;
-            localStorage.setItem("cs2_current_user", currentUser);
-            document.getElementById("loginScreen").style.display = "none";
+        // ========== СОБЫТИЯ ==========
+        document.getElementById("enterBtn").addEventListener("click", () => {
+            document.getElementById("welcomeScreen").style.display = "none";
             document.getElementById("mainMenu").style.display = "block";
             updateBalance();
             updateInventory();
             updateProfile();
-            tg.showAlert(`welcome ${username}! +200 stars bonus`);
-        });
-
-        document.getElementById("telegramAuthBtn").addEventListener("click", () => {
-            const tgUser = tg.initDataUnsafe?.user;
-            if (tgUser && tgUser.id) {
-                const username = "tg_" + tgUser.id;
-                if (!users[username]) {
-                    users[username] = {
-                        password: "telegram_auth",
-                        balance: 200,
-                        totalSpent: 0,
-                        inventory: [],
-                        joinDate: new Date().toLocaleDateString(),
-                        tradeLink: "",
-                        tgName: tgUser.first_name
-                    };
-                    saveUsers();
-                }
-                currentUser = username;
-                localStorage.setItem("cs2_current_user", currentUser);
-                document.getElementById("loginScreen").style.display = "none";
-                document.getElementById("mainMenu").style.display = "block";
-                updateBalance();
-                updateInventory();
-                updateProfile();
-                tg.showAlert(`welcome ${tgUser.first_name || "user"}!`);
-            } else {
-                tg.showAlert("telegram data not available");
-            }
+            renderMarket();
         });
 
         document.getElementById("topupBtn").addEventListener("click", () => {
-            tg.sendData(JSON.stringify({ action: "topup", user: currentUser }));
-            tg.showAlert(`add stars\n\nsend telegram stars to @wasxr\nuser id: ${currentUser}`);
+            tg.sendData(JSON.stringify({
+                action: "topup",
+                user_id: userId,
+                username: currentUserData.username
+            }));
+            tg.showAlert(`💎 Пополнение баланса\n\nПереведите Telegram Stars на @wasxr\nУкажите ваш ID: ${userId}`);
         });
 
         document.getElementById("saveTradeLinkBtn").addEventListener("click", () => {
-            const user = getCurrentUserData();
-            if (user) {
-                const link = document.getElementById("tradeLinkInput").value;
-                user.tradeLink = link;
-                saveUsers();
-                tg.showAlert("trade link saved");
+            const link = document.getElementById("tradeLinkInput").value.trim();
+            if (link) {
+                currentUserData.tradeLink = link;
+                saveUserData();
+                tg.showAlert("✅ Ссылка сохранена!");
+            } else {
+                tg.showAlert("❌ Введите ссылку");
             }
         });
 
         document.getElementById("logoutBtn").addEventListener("click", () => {
-            currentUser = null;
-            localStorage.removeItem("cs2_current_user");
-            document.getElementById("loginScreen").style.display = "flex";
-            document.getElementById("mainMenu").style.display = "none");
-            document.getElementById("loginUsername").value = "";
-            document.getElementById("loginPassword").value = "";
-            tg.showAlert("logged out");
+            localStorage.removeItem("cs2_users_extended");
+            tg.showAlert("Вы вышли из аккаунта");
+            tg.close();
         });
 
-        // Фильтрация
+        // Фильтры
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -802,15 +855,8 @@
             item.addEventListener('click', () => switchTab(item.dataset.tab));
         });
 
-        // Проверка авторизации при загрузке (сохранение работает!)
-        if (currentUser && users[currentUser]) {
-            document.getElementById("loginScreen").style.display = "none";
-            document.getElementById("mainMenu").style.display = "block";
-            updateBalance();
-            updateInventory();
-            updateProfile();
-            renderMarket();
-        }
+        // Запуск
+        setupWelcomeScreen();
     </script>
 </body>
 </html>
