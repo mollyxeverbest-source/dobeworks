@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-    <title>CS2 Market | Dobeworks</title>
+    <title>Game Skins | Dobeworks</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         * {
@@ -14,7 +14,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', Helvetica, Arial, sans-serif;
-            background: #ffffff;
+            background: #f8f9fc;
             min-height: 100vh;
             color: #1c1c1e;
         }
@@ -29,7 +29,7 @@
         .container {
             max-width: 400px;
             margin: 0 auto;
-            padding: 20px 16px 30px;
+            padding: 20px 16px 80px;
         }
 
         @keyframes fadeIn {
@@ -41,14 +41,43 @@
             animation: fadeIn 0.4s ease-out;
         }
 
-        /* Экран приветствия iOS */
+        /* ПОСТОЯННЫЙ GLOW (без мигания) */
+        .glow-gold {
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        .glow-red {
+            box-shadow: 0 0 12px rgba(255, 59, 48, 0.6);
+            border: 1px solid rgba(255, 59, 48, 0.3);
+        }
+        .glow-blue {
+            box-shadow: 0 0 12px rgba(0, 122, 255, 0.6);
+            border: 1px solid rgba(0, 122, 255, 0.3);
+        }
+        .glow-default {
+            box-shadow: 0 0 10px rgba(0, 122, 255, 0.3);
+            border: 1px solid rgba(0, 122, 255, 0.2);
+        }
+
+        /* GLOW для аватарки */
+        .avatar-glow {
+            box-shadow: 0 0 20px rgba(0, 122, 255, 0.8);
+            border: 2px solid rgba(0, 122, 255, 0.5);
+        }
+
+        /* GLOW для кнопки */
+        .btn-glow {
+            box-shadow: 0 0 15px rgba(0, 122, 255, 0.9);
+        }
+
+        /* Экран приветствия */
         .welcome-screen {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            background: #ffffff;
+            background: #f8f9fc;
         }
 
         @media (prefers-color-scheme: dark) {
@@ -60,19 +89,35 @@
         .welcome-card {
             text-align: center;
             width: 100%;
+            padding: 32px 24px;
+            border-radius: 48px;
+            background: #ffffff;
+            transition: all 0.2s;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .welcome-card {
+                background: #1c1c1e;
+            }
         }
 
         .welcome-avatar {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
-            border-radius: 60px;
+            border-radius: 50px;
             margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.3);
+            transition: all 0.2s;
+        }
+
+        .welcome-avatar span {
+            font-size: 44px;
+            font-weight: 500;
+            color: white;
         }
 
         .welcome-avatar img {
@@ -81,24 +126,16 @@
             object-fit: cover;
         }
 
-        .welcome-avatar span {
-            font-size: 52px;
-            font-weight: 500;
-            color: white;
-            text-transform: uppercase;
-        }
-
         .welcome-greeting {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 600;
             margin-bottom: 8px;
-            letter-spacing: -0.3px;
         }
 
         .welcome-name {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 40px;
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 32px;
             color: #007aff;
         }
 
@@ -106,27 +143,308 @@
             background: #007aff;
             border: none;
             border-radius: 14px;
-            padding: 16px 20px;
+            padding: 16px;
             font-size: 17px;
             font-weight: 600;
             color: white;
             width: 100%;
             cursor: pointer;
             transition: all 0.2s;
-            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
         }
 
         .welcome-btn:active {
-            background: #0051a8;
             transform: scale(0.97);
         }
 
-        /* Главное меню */
-        .main-menu {
+        /* Баннер */
+        .banner {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+        .banner:active {
+            transform: scale(0.98);
+        }
+
+        .banner-text {
+            flex: 1;
+        }
+
+        .banner-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .banner-sub {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .banner-btn {
+            background: #ffd700;
+            border: none;
+            border-radius: 30px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .banner-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* Категории */
+        .categories {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .category-item {
+            background: #e8ecf2;
+            border-radius: 30px;
+            padding: 8px 18px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1c1c1e;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .category-item.active {
+            background: #007aff;
+            color: white;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .category-item {
+                background: #1c1c1e;
+                color: #ffffff;
+            }
+        }
+
+        /* Поиск */
+        .search-bar {
+            background: #e8ecf2;
+            border-radius: 30px;
+            padding: 12px 18px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-input {
+            background: none;
+            border: none;
+            flex: 1;
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .search-bar {
+                background: #1c1c1e;
+            }
+            .search-input {
+                color: white;
+            }
+        }
+
+        /* Выпадающие списки */
+        .dropdowns-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .dropdown {
+            position: relative;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .dropdown-btn {
+            background: #e8ecf2;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #1c1c1e;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            transition: all 0.2s;
+        }
+
+        .dropdown-btn:active {
+            transform: scale(0.97);
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 8px;
+            margin-top: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 100;
             display: none;
         }
 
-        /* Нижняя навигация iOS */
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 10px 14px;
+            font-size: 13px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background: #e8ecf2;
+        }
+
+        .dropdown-item.selected {
+            background: #007aff;
+            color: white;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .dropdown-btn {
+                background: #1c1c1e;
+                color: #ffffff;
+            }
+            .dropdown-content {
+                background: #1c1c1e;
+                border: 1px solid #2c2c2e;
+            }
+            .dropdown-item:hover {
+                background: #2c2c2e;
+            }
+        }
+
+        /* Цветовые индикаторы */
+        .color-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 12px;
+            margin-right: 6px;
+        }
+        .color-red { background: #ff3b30; }
+        .color-blue { background: #007aff; }
+        .color-gold { background: #ffd700; }
+
+        /* Сетка скинов */
+        .items-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .item-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .item-card:active {
+            transform: scale(0.98);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .item-card {
+                background: #1c1c1e;
+                border: 1px solid #2c2c2e;
+            }
+        }
+
+        .item-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #e8ecf2;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .item-model {
+            font-size: 11px;
+            color: #8e8e93;
+            margin-bottom: 6px;
+        }
+
+        .item-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #007aff;
+        }
+
+        /* Баланс */
+        .balance-card {
+            background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .balance-label {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .balance-value {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        /* Нижняя навигация */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -134,18 +452,20 @@
             right: 0;
             max-width: 400px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
             display: flex;
             justify-content: space-around;
-            padding: 10px 20px 20px;
+            padding: 12px 20px 24px;
             border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
         }
 
         @media (prefers-color-scheme: dark) {
             .bottom-nav {
-                background: rgba(0, 0, 0, 0.95);
+                background: rgba(0, 0, 0, 0.98);
                 border-top-color: rgba(255, 255, 255, 0.1);
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
             }
         }
 
@@ -153,37 +473,42 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 4px;
-            font-size: 11px;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 500;
             color: #8e8e93;
             cursor: pointer;
-            transition: color 0.2s;
+            transition: all 0.2s;
+            padding: 6px 16px;
+            border-radius: 30px;
         }
 
         .nav-item.active {
             color: #007aff;
+            background: rgba(0, 122, 255, 0.1);
         }
 
         .nav-icon {
             font-size: 22px;
         }
 
-        /* Контент вкладок */
+        /* Табы */
         .tab-content {
             display: none;
-            padding-bottom: 80px;
         }
 
         .tab-content.active {
             display: block;
         }
 
-        /* Карточки */
+        /* Инвентарь */
         .card {
-            background: #f2f2f7;
-            border-radius: 14px;
+            background: #ffffff;
+            border-radius: 20px;
             padding: 16px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            box-shadow: 0 0 10px rgba(0, 122, 255, 0.3);
+            border: 1px solid rgba(0, 122, 255, 0.2);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -192,178 +517,33 @@
             }
         }
 
-        .card-title {
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .balance-card {
-            background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .balance-label {
-            font-size: 14px;
-            opacity: 0.8;
-            margin-bottom: 8px;
-        }
-
-        .balance-value {
-            font-size: 44px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .topup-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            border-radius: 30px;
-            padding: 10px 20px;
-            font-weight: 600;
-            color: white;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        /* Фильтры */
-        .filters {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: #f2f2f7;
-            border: none;
-            border-radius: 20px;
-            padding: 8px 16px;
-            font-size: 13px;
-            color: #007aff;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .filter-btn {
-                background: #1c1c1e;
-            }
-        }
-
-        .filter-btn.active {
-            background: #007aff;
-            color: white;
-        }
-
-        /* Список скинов */
-        .skin-item {
-            background: #f2f2f7;
-            border-radius: 14px;
-            padding: 12px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .skin-item {
-                background: #1c1c1e;
-            }
-        }
-
-        .skin-item:active {
-            transform: scale(0.98);
-            opacity: 0.8;
-        }
-
-        .skin-icon {
-            width: 56px;
-            height: 56px;
-            background: #e5e5ea;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .skin-icon {
-                background: #2c2c2e;
-            }
-        }
-
-        .skin-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .skin-info {
-            flex: 1;
-        }
-
-        .skin-name {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .skin-rarity {
-            font-size: 12px;
-        }
-
-        .rarity-industrial { color: #5e7c9c; }
-        .rarity-milspec { color: #4b69ff; }
-        .rarity-restricted { color: #8847ff; }
-        .rarity-classified { color: #d32ee6; }
-        .rarity-covert { color: #eb4b4b; }
-
-        .skin-price {
-            font-size: 16px;
-            font-weight: 700;
-            color: #007aff;
-        }
-
-        /* Инвентарь */
         .inventory-item {
-            background: #f2f2f7;
+            background: #f8f9fc;
             border-radius: 14px;
             padding: 12px;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 12px;
+            transition: all 0.2s;
+        }
+
+        .inventory-item:active {
+            transform: scale(0.98);
         }
 
         @media (prefers-color-scheme: dark) {
             .inventory-item {
-                background: #1c1c1e;
+                background: #2c2c2e;
             }
         }
 
         .inventory-icon {
             width: 48px;
             height: 48px;
-            background: #e5e5ea;
+            background: #e8ecf2;
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .inventory-icon {
-                background: #2c2c2e;
-            }
         }
 
         .inventory-icon img {
@@ -379,7 +559,6 @@
         .inventory-name {
             font-size: 15px;
             font-weight: 600;
-            margin-bottom: 2px;
         }
 
         .inventory-date {
@@ -387,15 +566,17 @@
             color: #8e8e93;
         }
 
-        /* Профиль iOS */
+        /* Профиль */
         .profile-header {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: #f2f2f7;
+            background: #ffffff;
             border-radius: 20px;
             padding: 24px;
             margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 122, 255, 0.3);
+            border: 1px solid rgba(0, 122, 255, 0.2);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -404,23 +585,31 @@
             }
         }
 
+        .profile-avatar-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
         .profile-icon {
-            width: 80px;
-            height: 80px;
-            background: #e5e5ea;
-            border-radius: 40px;
+            width: 70px;
+            height: 70px;
+            background: #e8ecf2;
+            border-radius: 35px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 12px;
             border: 2px solid #007aff;
             overflow: hidden;
+            transition: all 0.2s;
         }
 
-        @media (prefers-color-scheme: dark) {
-            .profile-icon {
-                background: #2c2c2e;
-            }
+        .profile-icon span {
+            font-size: 32px;
+            font-weight: 600;
+            color: #007aff;
         }
 
         .profile-icon img {
@@ -429,14 +618,8 @@
             object-fit: cover;
         }
 
-        .profile-icon span {
-            font-size: 36px;
-            font-weight: 600;
-            color: #007aff;
-        }
-
         .profile-name {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
         }
 
@@ -455,12 +638,6 @@
 
         .info-label {
             color: #8e8e93;
-            font-size: 15px;
-        }
-
-        .info-value {
-            font-weight: 500;
-            font-size: 15px;
         }
 
         .logout-btn {
@@ -473,34 +650,28 @@
             width: 100%;
             cursor: pointer;
             margin-top: 16px;
+            transition: all 0.2s;
         }
 
         .logout-btn:active {
-            opacity: 0.8;
             transform: scale(0.97);
         }
 
         .trade-input {
             width: 100%;
             padding: 14px;
-            background: #f2f2f7;
+            background: #e8ecf2;
             border: none;
             border-radius: 14px;
             font-size: 16px;
-            font-family: inherit;
             margin-bottom: 12px;
         }
 
         @media (prefers-color-scheme: dark) {
             .trade-input {
-                background: #1c1c1e;
+                background: #2c2c2e;
                 color: white;
             }
-        }
-
-        .trade-input:focus {
-            outline: none;
-            background: #e5e5ea;
         }
 
         .btn-secondary {
@@ -512,90 +683,220 @@
             color: #007aff;
             width: 100%;
             cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:active {
+            transform: scale(0.97);
+        }
+
+        /* Модальное окно */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.2s;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 24px;
+            width: 300px;
+            text-align: center;
+            animation: fadeIn 0.3s;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .modal-card {
+                background: #1c1c1e;
+            }
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .modal-skin {
+            font-size: 16px;
+            color: #007aff;
+            margin-bottom: 8px;
+        }
+
+        .modal-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-btn-confirm {
+            background: #007aff;
+            border: none;
+            color: white;
+        }
+
+        .modal-btn-cancel {
+            background: transparent;
+            border: 1px solid #8e8e93;
+            color: #8e8e93;
+        }
+
+        .modal-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* Аватарка в навигации */
+        .nav-item .nav-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 14px;
+            background: #007aff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .nav-item .nav-avatar span {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .nav-item .nav-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
 <body>
     <div class="container" id="app">
-        <!-- Экран приветствия iOS -->
-        <div id="welcomeScreen" class="welcome-screen fade-in">
+        <!-- Экран приветствия -->
+        <div id="welcomeScreen" class="welcome-screen">
             <div class="welcome-card">
-                <div class="welcome-avatar" id="welcomeAvatar">
-                    <span id="welcomeInitial">R</span>
+                <div class="welcome-avatar avatar-glow" id="welcomeAvatar">
+                    <span id="welcomeInitial">U</span>
                 </div>
-                <div class="welcome-greeting" id="welcomeGreeting">Здравствуйте,</div>
+                <div class="welcome-greeting">Здравствуйте,</div>
                 <div class="welcome-name" id="welcomeName">Игрок</div>
-                <button class="welcome-btn" id="enterBtn">Начать</button>
+                <button class="welcome-btn btn-glow" id="enterBtn">Начать</button>
             </div>
         </div>
 
         <!-- Главное меню -->
-        <div id="mainMenu" class="main-menu fade-in">
-            <!-- Вкладка МАРКЕТ -->
+        <div id="mainMenu" style="display: none;">
             <div class="tab-content active" id="tab-market">
                 <div class="balance-card">
-                    <div class="balance-info">
-                        <div class="balance-label">Твой баланс</div>
+                    <div>
+                        <div class="balance-label">Баланс</div>
                         <div class="balance-value" id="balanceValue">0</div>
                     </div>
-                    <button class="topup-btn" id="topupBtn">Пополнить Stars</button>
+                    <button class="welcome-btn" id="topupBtn" style="background: rgba(255,255,255,0.2); padding: 8px 16px; width: auto;">Пополнить</button>
                 </div>
 
-                <div class="filters">
-                    <button class="filter-btn active" data-rarity="all">Все</button>
-                    <button class="filter-btn" data-rarity="industrial">Industrial</button>
-                    <button class="filter-btn" data-rarity="milspec">Mil-Spec</button>
-                    <button class="filter-btn" data-rarity="restricted">Restricted</button>
-                    <button class="filter-btn" data-rarity="classified">Classified</button>
-                    <button class="filter-btn" data-rarity="covert">Covert</button>
+                <div class="banner">
+                    <div class="banner-text">
+                        <div class="banner-title">Открытый бета-тест</div>
+                        <div class="banner-sub">Присоединяйся и тестируй первым!</div>
+                    </div>
+                    <button class="banner-btn">Участвовать</button>
                 </div>
 
-                <div id="skinsList"></div>
+                <div class="dropdowns-row">
+                    <div class="dropdown" id="dropdownType">
+                        <button class="dropdown-btn" id="dropdownTypeBtn">Тип ▼</button>
+                        <div class="dropdown-content" id="dropdownTypeContent">
+                            <div class="dropdown-item" data-type="all">Все</div>
+                            <div class="dropdown-item" data-type="rifle">Штурмовая винтовка</div>
+                            <div class="dropdown-item" data-type="revolver">Револьвер</div>
+                            <div class="dropdown-item" data-type="smg">Пистолет-пулемёт</div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown" id="dropdownBg">
+                        <button class="dropdown-btn" id="dropdownBgBtn">Фон ▼</button>
+                        <div class="dropdown-content" id="dropdownBgContent">
+                            <div class="dropdown-item" data-bg="all">Все</div>
+                            <div class="dropdown-item" data-bg="bg_red"><span class="color-dot color-red"></span> Красный</div>
+                            <div class="dropdown-item" data-bg="bg_blue"><span class="color-dot color-blue"></span> Синий</div>
+                            <div class="dropdown-item" data-bg="bg_gold"><span class="color-dot color-gold"></span> Золотой</div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown" id="dropdownSymbol">
+                        <button class="dropdown-btn" id="dropdownSymbolBtn">Символ ▼</button>
+                        <div class="dropdown-content" id="dropdownSymbolContent">
+                            <div class="dropdown-item" data-symbol="all">Все</div>
+                            <div class="dropdown-item" data-symbol="symbol_star">⭐ Звезда</div>
+                            <div class="dropdown-item" data-symbol="symbol_skull">💀 Череп</div>
+                            <div class="dropdown-item" data-symbol="symbol_dragon">🐉 Дракон</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Поиск по названию" id="searchInput">
+                </div>
+
+                <div class="items-grid" id="itemsGrid"></div>
             </div>
 
-            <!-- Вкладка ИНВЕНТАРЬ -->
             <div class="tab-content" id="tab-inventory">
                 <div class="card">
-                    <div class="card-title">Мои скины</div>
+                    <div style="font-weight: 600; margin-bottom: 16px;">Мои скины</div>
                     <div id="inventoryList"></div>
                 </div>
             </div>
 
-            <!-- Вкладка ПРОФИЛЬ -->
             <div class="tab-content" id="tab-profile">
                 <div class="profile-header">
-                    <div class="profile-icon" id="profileIcon">
-                        <span id="profileInitial">U</span>
-                    </div>
-                    <div class="profile-name" id="profileUsername">user</div>
-                </div>
-
-                <div class="card">
-                    <div class="card-title">Статистика</div>
-                    <div class="info-row">
-                        <span class="info-label">Потрачено</span>
-                        <span class="info-value" id="totalSpent">0 stars</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Предметов</span>
-                        <span class="info-value" id="itemsOwned">0</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">Аккаунт с</span>
-                        <span class="info-value" id="memberSince">—</span>
+                    <div class="profile-avatar-row">
+                        <div class="profile-icon avatar-glow" id="profileIcon">
+                            <span id="profileInitial">U</span>
+                        </div>
+                        <div class="profile-name" id="profileUsername">user</div>
                     </div>
                 </div>
-
                 <div class="card">
-                    <div class="card-title">Steam Trade Link</div>
+                    <div class="info-row"><span class="info-label">Потрачено</span><span id="totalSpent">0 stars</span></div>
+                    <div class="info-row"><span class="info-label">Скинов</span><span id="itemsOwned">0</span></div>
+                    <div class="info-row"><span class="info-label">Аккаунт с</span><span id="memberSince">—</span></div>
+                </div>
+                <div class="card">
+                    <div style="font-weight: 600; margin-bottom: 12px;">Steam Trade Link</div>
                     <input type="text" id="tradeLinkInput" class="trade-input" placeholder="https://steamcommunity.com/tradeoffer/...">
                     <button class="btn-secondary" id="saveTradeLinkBtn">Сохранить</button>
                 </div>
-
                 <button class="logout-btn" id="logoutBtn">Выйти</button>
             </div>
 
-            <!-- Нижняя навигация -->
             <div class="bottom-nav">
                 <div class="nav-item active" data-tab="market">
                     <div class="nav-icon">🛍️</div>
@@ -605,8 +906,10 @@
                     <div class="nav-icon">📦</div>
                     <span>Инвентарь</span>
                 </div>
-                <div class="nav-item" data-tab="profile">
-                    <div class="nav-icon">👤</div>
+                <div class="nav-item" data-tab="profile" id="profileNavItem">
+                    <div class="nav-avatar" id="navAvatar">
+                        <span id="navAvatarInitial">U</span>
+                    </div>
                     <span>Профиль</span>
                 </div>
             </div>
@@ -618,245 +921,299 @@
         tg.ready();
         tg.expand();
 
-        // ========== ПОЛУЧАЕМ ДАННЫЕ ПОЛЬЗОВАТЕЛЯ ИЗ TELEGRAM ==========
         let tgUser = tg.initDataUnsafe?.user;
-        
         if (!tgUser || !tgUser.id) {
-            tgUser = {
-                first_name: "Игрок",
-                last_name: "",
-                id: Date.now(),
-                photo_url: null,
-                username: "player"
-            };
+            tgUser = { first_name: "Игрок", id: Date.now(), photo_url: null };
         }
 
         const userId = "user_" + tgUser.id;
         const firstName = tgUser.first_name || "Игрок";
-        const fullName = `${firstName} ${tgUser.last_name || ""}`.trim();
         const initial = firstName.charAt(0).toUpperCase();
         const userPhotoUrl = tgUser.photo_url;
 
-        // ========== ЗАГРУЗКА ДАННЫХ ИЗ STORAGE ==========
-        let users = JSON.parse(localStorage.getItem("cs2_users_extended")) || {};
-        
+        let users = JSON.parse(localStorage.getItem("game_skins_v9")) || {};
         if (!users[userId]) {
             users[userId] = {
-                username: fullName,
-                balance: 150,
+                username: firstName,
+                balance: 500,
                 totalSpent: 0,
                 inventory: [],
                 joinDate: new Date().toLocaleDateString(),
                 tradeLink: ""
             };
-            localStorage.setItem("cs2_users_extended", JSON.stringify(users));
+            localStorage.setItem("game_skins_v9", JSON.stringify(users));
         }
-        
-        let currentUserData = users[userId];
-        let currentRarityFilter = "all";
+        let currentUser = users[userId];
 
-        // ========== СКИНЫ С РЕАЛЬНЫМИ КАРТИНКАМИ ==========
+        // КАТАЛОГ СКИНОВ С КАРТИНКАМИ
         const skinsCatalog = [
-            { name: "AK-47 | Redline", rarity: "classified", price: 450, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJYz1H4-G3koG0hPz2N7LEgn8u7MxkhbmRr4z2jQ2xrxYtZ2r6ddOXIQRrZA-G8wO8x-bv1Ja47cvJynXo-9Wln3VvsQ" },
-            { name: "AWP | Dragon Lore", rarity: "covert", price: 5000, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FA957fPLQwJM9d23h5O0m_7zOq_um2pD7Mkgi7yS9IjxjwW3_EdoYz3zdoKQJAdrMl6G8wXst7zv0pO56MnNnHtkM7A" },
-            { name: "M4A4 | Howl", rarity: "covert", price: 3200, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz0v_fdz9V09mKmYy0m_LwNbrQkWRY781n2u6Sp9iljVbl_BU-Yzr0cI7FJAM4Yl6G8wXtkLu70Mbpu8ycni48MXVt" },
-            { name: "USP-S | Kill Confirmed", rarity: "classified", price: 280, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoko26tCBw0_bYcThD6d6xq5OYqPHDPr7Vn2VU7cB4lLuR9I3w0Qzl-hZsZGn6doeeJlE9Yl-F-wW5xLrt0pS66Z2ewCQ27g" },
-            { name: "Desert Eagle | Blaze", rarity: "restricted", price: 150, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0v73dTxD6d6xq5OYqPHDPr7Vn2VU7cB4lLuR9I3w0Qzl-hZsZGn6doeeJlE9Yl-F-wW5xLrt0pS66Z2ewCQ27g" },
-            { name: "AK-47 | Bloodsport", rarity: "classified", price: 380, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhzwc3acitR09K5lZm0nvL4NbrQkWRY781n2u6Sp9iljVbl_BU-Yzr0cI7FJAM4Yl6G8wXtkLu70Mbpu8yZnSg1ujIuuw" },
-            { name: "M4A1-S | Printstream", rarity: "covert", price: 800, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H6-K3m5S0n_rLPoPck2NpgIhz2-2QoI2hjwGyr0NsYDr7dNLEJgI2ZAyE_AO_w-a9gMTquZSbyi5osiF9wA" },
-            { name: "SSG 08 | Death Strike", rarity: "milspec", price: 45, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PvQaTJY09SzlZaS2aX3MOvSlzlQucdy2LqU9NmnjAzl_UJoYmqldYSTIQI_NV_X81bvkufxxcjryPo2vmI" },
-            { name: "Glock-18 | Water Elemental", rarity: "milspec", price: 55, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0v73dTxD6d6xq5OYqPHDPr7Vn2VU7cB4lLuR9I3w0Qzl-hZsZGn6doeeJlE9Yl-F-wW5xLrt0pS66Z2ewCQ27g" },
-            { name: "MAG-7 | Heat", rarity: "industrial", price: 20, iconUrl: "https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhzwc3acitR09K5lZm0nvL4NbrQkWRY781n2u6Sp9iljVbl_BU-Yzr0cI7FJAM4Yl6G8wXtkLu70Mbpu8yZnSg1ujIuuw" }
+            { name: "Клинок Рассвета", type: "rifle", model: "M4A4", price: 150, bg: "bg_gold", symbol: "symbol_star", image: "", glow: "gold" },
+            { name: "Теневой Коготь", type: "revolver", model: "Desert Eagle", price: 320, bg: "bg_red", symbol: "symbol_skull", image: "shadow.png", glow: "red" },
+            { name: "Драконья Чешуя", type: "rifle", model: "AK-47", price: 450, bg: "bg_gold", symbol: "symbol_dragon", image: "", glow: "gold" },
+            { name: "Ледяное Сердце", type: "smg", model: "MP5", price: 280, bg: "bg_blue", symbol: "symbol_star", image: "", glow: "blue" },
+            { name: "Пламенный Клинок", type: "rifle", model: "FAMAS", price: 520, bg: "bg_red", symbol: "symbol_dragon", image: "", glow: "red" },
+            { name: "Ночной Ужас", type: "revolver", model: "R8 Revolver", price: 890, bg: "bg_red", symbol: "symbol_skull", image: "", glow: "red" },
+            { name: "Благословение Небес", type: "smg", model: "MP7", price: 200, bg: "bg_blue", symbol: "symbol_star", image: "", glow: "blue" },
+            { name: "Скелетный Ключ", type: "rifle", model: "SG 553", price: 75, bg: "bg_red", symbol: "symbol_skull", image: "", glow: "red" },
+            { name: "Золотой Рунический", type: "revolver", model: "Desert Eagle", price: 1200, bg: "bg_gold", symbol: "symbol_dragon", image: "", glow: "gold" },
+            { name: "Душа Демона", type: "smg", model: "PP-Bizon", price: 350, bg: "bg_red", symbol: "symbol_skull", image: "", glow: "red" }
         ];
 
-        // ========== ФУНКЦИИ ОБНОВЛЕНИЯ ==========
-        function saveUserData() {
-            users[userId] = currentUserData;
-            localStorage.setItem("cs2_users_extended", JSON.stringify(users));
+        let filters = { type: "all", bg: "all", symbol: "all" };
+        let searchQuery = "";
+
+        function saveUser() {
+            users[userId] = currentUser;
+            localStorage.setItem("game_skins_v9", JSON.stringify(users));
         }
 
-        function updateBalance() {
-            document.getElementById("balanceValue").textContent = currentUserData.balance;
+        function updateUI() {
+            document.getElementById("balanceValue").textContent = currentUser.balance;
+            document.getElementById("profileInitial").textContent = currentUser.username.charAt(0).toUpperCase();
+            document.getElementById("profileUsername").textContent = currentUser.username;
+            document.getElementById("totalSpent").textContent = currentUser.totalSpent + " stars";
+            document.getElementById("itemsOwned").textContent = currentUser.inventory.length;
+            document.getElementById("memberSince").textContent = currentUser.joinDate;
+            document.getElementById("tradeLinkInput").value = currentUser.tradeLink || "";
+            
+            if (userPhotoUrl) {
+                const navAvatar = document.getElementById("navAvatar");
+                navAvatar.innerHTML = `<img src="${userPhotoUrl}" style="width:100%;height:100%;object-fit:cover;">`;
+                document.getElementById("navAvatarInitial").style.display = "none";
+            } else {
+                document.getElementById("navAvatarInitial").textContent = initial;
+            }
+            
+            renderInventory();
         }
 
-        function updateProfile() {
-            document.getElementById("profileInitial").textContent = currentUserData.username.charAt(0).toUpperCase();
-            document.getElementById("profileUsername").textContent = currentUserData.username;
-            document.getElementById("totalSpent").textContent = currentUserData.totalSpent + " stars";
-            document.getElementById("itemsOwned").textContent = currentUserData.inventory.length;
-            document.getElementById("memberSince").textContent = currentUserData.joinDate;
-            document.getElementById("tradeLinkInput").value = currentUserData.tradeLink || "";
-        }
-
-        function updateInventory() {
-            const inventoryList = document.getElementById("inventoryList");
-            if (!currentUserData.inventory || currentUserData.inventory.length === 0) {
-                inventoryList.innerHTML = '<div style="text-align: center; color: #8e8e93; padding: 40px;">У вас пока нет скинов</div>';
+        function renderInventory() {
+            const container = document.getElementById("inventoryList");
+            if (currentUser.inventory.length === 0) {
+                container.innerHTML = '<div style="text-align:center; color:#8e8e93; padding:40px;">Пусто</div>';
                 return;
             }
-            inventoryList.innerHTML = currentUserData.inventory.map(item => `
+            container.innerHTML = currentUser.inventory.map(item => `
                 <div class="inventory-item">
-                    <div class="inventory-icon"><img src="${item.iconUrl}" onerror="this.src='https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PvQaTJY09SzlZaS2aX3MOvSlzlQucdy2LqU9NmnjAzl_UJoYmqldYSTIQI_NV_X81bvkufxxcjryPo2vmI'"></div>
+                    <div class="inventory-icon">
+                        <img src="${item.image || 'https://placehold.co/48x48/e8ecf2/8e8e93?text=' + item.name.charAt(0)}" onerror="this.src='https://placehold.co/48x48/e8ecf2/8e8e93?text=?'">
+                    </div>
                     <div class="inventory-info">
                         <div class="inventory-name">${item.name}</div>
-                        <div class="inventory-date">${item.date || "куплен"}</div>
+                        <div class="inventory-date">${item.date || "приобретён"}</div>
                     </div>
-                    <div class="skin-price">${item.price} stars</div>
+                    <div style="color:#007aff; font-weight:600;">${item.price} ★</div>
                 </div>
             `).join('');
         }
 
-        function getRarityClass(rarity) {
-            switch(rarity) {
-                case "industrial": return "rarity-industrial";
-                case "milspec": return "rarity-milspec";
-                case "restricted": return "rarity-restricted";
-                case "classified": return "rarity-classified";
-                case "covert": return "rarity-covert";
-                default: return "";
+        function getFilteredSkins() {
+            return skinsCatalog.filter(skin => {
+                if (filters.type !== "all" && skin.type !== filters.type) return false;
+                if (filters.bg !== "all" && skin.bg !== filters.bg) return false;
+                if (filters.symbol !== "all" && skin.symbol !== filters.symbol) return false;
+                if (searchQuery) {
+                    return skin.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                           skin.model.toLowerCase().includes(searchQuery.toLowerCase());
+                }
+                return true;
+            });
+        }
+
+        function getBgColor(bg) {
+            switch(bg) {
+                case "bg_red": return "#ff3b30";
+                case "bg_blue": return "#007aff";
+                case "bg_gold": return "#ffd700";
+                default: return "#8e8e93";
+            }
+        }
+
+        function getSymbolIcon(symbol) {
+            switch(symbol) {
+                case "symbol_star": return "⭐";
+                case "symbol_skull": return "💀";
+                case "symbol_dragon": return "🐉";
+                default: return "✨";
             }
         }
 
         function renderMarket() {
-            const filtered = currentRarityFilter === "all" 
-                ? skinsCatalog 
-                : skinsCatalog.filter(s => s.rarity === currentRarityFilter);
+            const grid = document.getElementById("itemsGrid");
+            const filtered = getFilteredSkins();
             
-            const skinsList = document.getElementById("skinsList");
-            skinsList.innerHTML = filtered.map(skin => `
-                <div class="skin-item" data-name="${skin.name}" data-price="${skin.price}" data-iconurl="${skin.iconUrl}" data-rarity="${skin.rarity}">
-                    <div class="skin-icon"><img src="${skin.iconUrl}" onerror="this.src='https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PvQaTJY09SzlZaS2aX3MOvSlzlQucdy2LqU9NmnjAzl_UJoYmqldYSTIQI_NV_X81bvkufxxcjryPo2vmI'"></div>
-                    <div class="skin-info">
-                        <div class="skin-name">${skin.name}</div>
-                        <div class="skin-rarity ${getRarityClass(skin.rarity)}">${skin.rarity}</div>
+            grid.innerHTML = filtered.map(skin => `
+                <div class="item-card glow-${skin.glow}" data-name="${skin.name}" data-type="${skin.type}" data-model="${skin.model}" data-price="${skin.price}" data-bg="${skin.bg}" data-symbol="${skin.symbol}" data-image="${skin.image}" data-glow="${skin.glow}">
+                    <div class="item-image">
+                        ${skin.image ? 
+                            `<img src="${skin.image}" onerror="this.src='https://placehold.co/150x150/e8ecf2/8e8e93?text=' + encodeURIComponent(skin.name.charAt(0))">` :
+                            `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:${getBgColor(skin.bg)}; border-radius:12px;">
+                                <span style="font-size:36px;">${getSymbolIcon(skin.symbol)}</span>
+                             </div>`
+                        }
                     </div>
-                    <div class="skin-price">${skin.price} stars</div>
+                    <div class="item-name">${skin.name}</div>
+                    <div class="item-model">${skin.model}</div>
+                    <div class="item-price">${skin.price} ★</div>
                 </div>
             `).join('');
-            
-            document.querySelectorAll('.skin-item').forEach(el => {
-                el.addEventListener('click', () => {
-                    const name = el.dataset.name;
-                    const price = parseInt(el.dataset.price);
-                    const iconUrl = el.dataset.iconurl;
-                    const rarity = el.dataset.rarity;
-                    buySkin(name, price, iconUrl, rarity);
+
+            document.querySelectorAll('.item-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const skin = {
+                        name: card.dataset.name,
+                        type: card.dataset.type,
+                        model: card.dataset.model,
+                        price: parseInt(card.dataset.price),
+                        bg: card.dataset.bg,
+                        symbol: card.dataset.symbol,
+                        image: card.dataset.image,
+                        glow: card.dataset.glow
+                    };
+                    showConfirmModal(skin, (confirmed) => {
+                        if (confirmed) executePurchase(skin);
+                    });
                 });
             });
         }
 
-        function buySkin(name, price, iconUrl, rarity) {
-            if (currentUserData.balance >= price) {
-                // Списание баланса
-                currentUserData.balance -= price;
-                currentUserData.totalSpent += price;
-                
-                // Добавление в инвентарь
-                if (!currentUserData.inventory) currentUserData.inventory = [];
-                currentUserData.inventory.push({
-                    name: name,
-                    price: price,
-                    iconUrl: iconUrl,
-                    rarity: rarity,
-                    date: new Date().toLocaleDateString()
-                });
-                
-                saveUserData();
-                updateBalance();
-                updateInventory();
-                updateProfile();
-                
-                tg.showAlert(`✅ Вы купили ${name} за ${price} stars!`);
-                
-                // Отправка данных боту для подтверждения (опционально)
-                tg.sendData(JSON.stringify({
-                    action: "purchase",
-                    skin: name,
-                    price: price,
-                    user_id: userId
-                }));
-            } else {
-                tg.showAlert(`❌ Не хватает stars!\nНужно: ${price}, у вас: ${currentUserData.balance}`);
-            }
-        }
-
-        // ========== НАСТРОЙКА ЭКРАНА ПРИВЕТСТВИЯ ==========
-        function setupWelcomeScreen() {
-            document.getElementById("welcomeGreeting").textContent = "Здравствуйте,";
-            document.getElementById("welcomeName").textContent = firstName;
-            document.getElementById("welcomeInitial").textContent = initial;
+        function showConfirmModal(skin, callback) {
+            const overlay = document.createElement('div');
+            overlay.className = 'modal-overlay';
+            overlay.innerHTML = `
+                <div class="modal-card">
+                    <div class="modal-title">Подтверждение покупки</div>
+                    <div class="modal-skin">${skin.name}</div>
+                    <div class="modal-price">${skin.price} ★</div>
+                    <div class="modal-buttons">
+                        <button class="modal-btn modal-btn-cancel" id="modalCancel">Отмена</button>
+                        <button class="modal-btn modal-btn-confirm" id="modalConfirm">Купить</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
             
-            if (userPhotoUrl) {
-                const img = document.createElement('img');
-                img.src = userPhotoUrl;
-                const avatarDiv = document.getElementById("welcomeAvatar");
-                avatarDiv.innerHTML = '';
-                avatarDiv.appendChild(img);
+            document.getElementById('modalCancel').onclick = () => {
+                overlay.remove();
+                if (callback) callback(false);
+            };
+            document.getElementById('modalConfirm').onclick = () => {
+                overlay.remove();
+                if (callback) callback(true);
+            };
+        }
+
+        function executePurchase(skin) {
+            if (currentUser.balance >= skin.price) {
+                currentUser.balance -= skin.price;
+                currentUser.totalSpent += skin.price;
+                currentUser.inventory.push({ 
+                    name: skin.name, 
+                    type: skin.type,
+                    model: skin.model,
+                    price: skin.price, 
+                    image: skin.image,
+                    date: new Date().toLocaleDateString() 
+                });
+                saveUser();
+                updateUI();
+                tg.showAlert(`✅ Куплен скин "${skin.name}" за ${skin.price} звёзд!`);
+                tg.sendData(JSON.stringify({ action: "purchase", skin: skin.name, price: skin.price }));
+            } else {
+                tg.showAlert(`❌ Не хватает звёзд! Нужно ${skin.price}, у вас ${currentUser.balance}`);
             }
         }
 
-        // ========== СОБЫТИЯ ==========
-        document.getElementById("enterBtn").addEventListener("click", () => {
-            document.getElementById("welcomeScreen").style.display = "none";
-            document.getElementById("mainMenu").style.display = "block";
-            updateBalance();
-            updateInventory();
-            updateProfile();
+        function setupDropdown(dropdownId, btnId, contentId, onSelect) {
+            const btn = document.getElementById(btnId);
+            const content = document.getElementById(contentId);
+            
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                content.classList.toggle('show');
+            });
+            
+            content.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    onSelect(item);
+                    content.classList.remove('show');
+                });
+            });
+            
+            document.addEventListener('click', () => {
+                content.classList.remove('show');
+            });
+        }
+
+        setupDropdown('dropdownType', 'dropdownTypeBtn', 'dropdownTypeContent', (item) => {
+            filters.type = item.dataset.type;
+            renderMarket();
+        });
+        
+        setupDropdown('dropdownBg', 'dropdownBgBtn', 'dropdownBgContent', (item) => {
+            filters.bg = item.dataset.bg;
+            renderMarket();
+        });
+        
+        setupDropdown('dropdownSymbol', 'dropdownSymbolBtn', 'dropdownSymbolContent', (item) => {
+            filters.symbol = item.dataset.symbol;
             renderMarket();
         });
 
-        document.getElementById("topupBtn").addEventListener("click", () => {
-            tg.sendData(JSON.stringify({
-                action: "topup",
-                user_id: userId,
-                username: currentUserData.username
-            }));
-            tg.showAlert(`💎 Пополнение баланса\n\nПереведите Telegram Stars на @wasxr\nУкажите ваш ID: ${userId}`);
-        });
+        document.getElementById("enterBtn").onclick = () => {
+            document.getElementById("welcomeScreen").style.display = "none";
+            document.getElementById("mainMenu").style.display = "block";
+            document.getElementById("welcomeName").innerText = firstName;
+            document.getElementById("welcomeInitial").innerText = initial;
+            
+            if (userPhotoUrl) {
+                const welcomeAvatar = document.getElementById("welcomeAvatar");
+                welcomeAvatar.innerHTML = `<img src="${userPhotoUrl}" style="width:100%;height:100%;object-fit:cover;">`;
+                const profileIcon = document.getElementById("profileIcon");
+                profileIcon.innerHTML = `<img src="${userPhotoUrl}" style="width:100%;height:100%;object-fit:cover;">`;
+            }
+            
+            updateUI();
+            renderMarket();
+        };
 
-        document.getElementById("saveTradeLinkBtn").addEventListener("click", () => {
+        document.getElementById("topupBtn").onclick = () => {
+            tg.sendData(JSON.stringify({ action: "topup", user_id: userId }));
+            tg.showAlert(`💎 Пополнение баланса\nПереведите звёзды на @wasxr\nВаш ID: ${userId}`);
+        };
+
+        document.getElementById("saveTradeLinkBtn").onclick = () => {
             const link = document.getElementById("tradeLinkInput").value.trim();
             if (link) {
-                currentUserData.tradeLink = link;
-                saveUserData();
-                tg.showAlert("✅ Ссылка сохранена!");
-            } else {
-                tg.showAlert("❌ Введите ссылку");
+                currentUser.tradeLink = link;
+                saveUser();
+                tg.showAlert("✅ Trade link сохранён");
             }
-        });
+        };
 
-        document.getElementById("logoutBtn").addEventListener("click", () => {
-            localStorage.removeItem("cs2_users_extended");
-            tg.showAlert("Вы вышли из аккаунта");
+        document.getElementById("logoutBtn").onclick = () => {
+            localStorage.removeItem("game_skins_v9");
             tg.close();
+        };
+
+        document.getElementById("searchInput").oninput = (e) => {
+            searchQuery = e.target.value;
+            renderMarket();
+        };
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.onclick = () => {
+                const tab = item.dataset.tab;
+                document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+                document.getElementById(`tab-${tab}`).classList.add('active');
+                document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                item.classList.add('active');
+                if (tab === 'inventory') renderInventory();
+            };
         });
 
-        // Фильтры
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentRarityFilter = btn.dataset.rarity;
-                renderMarket();
-            });
-        });
-
-        // Переключение вкладок
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.getElementById(`tab-${tabId}`).classList.add('active');
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            document.querySelector(`.nav-item[data-tab="${tabId}"]`).classList.add('active');
-            if (tabId === 'inventory') updateInventory();
-            if (tabId === 'profile') updateProfile();
-        }
-
-        document.querySelectorAll('.nav-item[data-tab]').forEach(item => {
-            item.addEventListener('click', () => switchTab(item.dataset.tab));
-        });
-
-        // Запуск
-        setupWelcomeScreen();
+        document.querySelector('.banner-btn').onclick = () => tg.showAlert("Вы присоединились к бета-тесту!");
     </script>
 </body>
 </html>
