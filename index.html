@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
     <title>Rusty Market | Dobeworks</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         * {
             margin: 0;
@@ -14,24 +13,18 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', Helvetica, Arial, sans-serif;
+            background: #f8f9fc;
             min-height: 100vh;
             color: #1c1c1e;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        /* ===== СВЕТЛАЯ ТЕМА (по умолчанию) ===== */
-        body {
-            background: #f8f9fc;
         }
 
         .container {
             max-width: 400px;
             margin: 0 auto;
             padding: 20px 16px 80px;
-            background: #f8f9fc;
-            min-height: 100vh;
         }
 
+        /* ===== СВЕТЛАЯ ТЕМА ===== */
         .welcome-screen {
             min-height: 100vh;
             display: flex;
@@ -50,8 +43,8 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
-        .welcome-greeting { color: #1c1c1e; }
-        .welcome-name { color: #007aff; }
+        .welcome-greeting { font-size: 24px; font-weight: 600; margin-bottom: 8px; color: #1c1c1e; }
+        .welcome-name { font-size: 20px; font-weight: 500; margin-bottom: 32px; color: #007aff; }
 
         .welcome-avatar {
             width: 100px;
@@ -64,7 +57,6 @@
             justify-content: center;
             overflow: hidden;
         }
-        .welcome-avatar img { width: 100%; height: 100%; object-fit: cover; }
         .welcome-avatar span { font-size: 44px; font-weight: 500; color: white; }
 
         .welcome-btn {
@@ -76,32 +68,6 @@
             font-weight: 600;
             color: white;
             width: 100%;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .welcome-btn:active { transform: scale(0.97); }
-
-        .banner {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border-radius: 20px;
-            padding: 16px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-        .banner-text { flex: 1; color: white; }
-        .banner-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; color: white; }
-        .banner-sub { font-size: 12px; opacity: 0.8; color: #ccc; }
-        .banner-btn {
-            background: #ffd700;
-            border: none;
-            border-radius: 30px;
-            padding: 8px 16px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #000;
             cursor: pointer;
         }
 
@@ -115,8 +81,7 @@
             align-items: center;
             color: white;
         }
-        .balance-value { font-size: 28px; font-weight: 700; display: flex; align-items: center; gap: 4px; color: white; }
-        .balance-value img { width: 24px; height: 24px; }
+        .balance-value { font-size: 28px; font-weight: 700; display: flex; align-items: center; gap: 4px; }
 
         .card {
             background: #ffffff;
@@ -125,7 +90,6 @@
             margin-bottom: 16px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
-        .card-title { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #1c1c1e; }
 
         .info-row {
             display: flex;
@@ -134,50 +98,19 @@
             border-bottom: 0.5px solid #c6c6c8;
         }
         .info-label { color: #8e8e93; }
-        .info-value { color: #1c1c1e; font-weight: 500; }
 
-        .dropdown-btn {
-            background: #e8ecf2;
+        .btn-blue {
+            background: #007aff;
             border: none;
-            border-radius: 25px;
-            padding: 10px 14px;
-            font-size: 13px;
-            font-weight: 500;
-            color: #1c1c1e;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border-radius: 14px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
             width: 100%;
+            cursor: pointer;
+            margin-top: 8px;
         }
-        .dropdown-content {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 8px;
-            margin-top: 4px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 100;
-            display: none;
-        }
-        .dropdown-content.show { display: block; }
-        .dropdown-item { padding: 10px 14px; font-size: 13px; border-radius: 12px; cursor: pointer; color: #1c1c1e; }
-        .dropdown-item:hover { background: #e8ecf2; }
-
-        .search-bar {
-            background: #e8ecf2;
-            border-radius: 30px;
-            padding: 12px 18px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .search-input { background: none; border: none; flex: 1; font-size: 16px; outline: none; color: #1c1c1e; }
-        .search-input::placeholder { color: #8e8e93; }
 
         .items-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .item-card {
@@ -185,10 +118,8 @@
             border-radius: 16px;
             padding: 12px;
             cursor: pointer;
-            transition: all 0.2s;
             border: 1px solid #e5e5ea;
         }
-        .item-card:active { transform: scale(0.97); }
         .item-image {
             width: 100%;
             aspect-ratio: 1;
@@ -201,32 +132,7 @@
             margin-bottom: 10px;
         }
         .item-name { font-size: 14px; font-weight: 600; text-align: center; color: #1c1c1e; }
-        .item-price {
-            font-size: 16px;
-            font-weight: 700;
-            color: #007aff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-        }
-        .item-price img { width: 16px; height: 16px; }
-
-        .cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-        .case-card {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: white;
-        }
-        .case-card:active { transform: scale(0.97); }
-        .case-image { width: 80px; height: 80px; background: rgba(255, 215, 0, 0.2); border-radius: 20px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 48px; }
-        .case-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; color: white; }
-        .case-price { font-size: 14px; color: #ffd700; display: flex; align-items: center; justify-content: center; gap: 4px; }
-        .case-price img { width: 14px; height: 14px; }
+        .item-price { font-size: 16px; font-weight: 700; color: #007aff; text-align: center; }
 
         .bottom-nav {
             position: fixed;
@@ -259,7 +165,7 @@
         .nav-icon { font-size: 20px; }
 
         .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.3s ease-out; }
+        .tab-content.active { display: block; }
 
         .inventory-item {
             background: #ffffff;
@@ -269,94 +175,12 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            cursor: pointer;
             border: 1px solid #e5e5ea;
         }
-        .inventory-item:active { transform: scale(0.98); }
         .inventory-icon { width: 48px; height: 48px; background: #e8ecf2; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
         .inventory-info { flex: 1; }
         .inventory-name { font-size: 15px; font-weight: 600; color: #1c1c1e; }
         .inventory-date { font-size: 11px; color: #8e8e93; }
-
-        .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
-        .page-btn { background: #e8ecf2; border: none; border-radius: 20px; padding: 6px 12px; font-size: 12px; cursor: pointer; color: #1c1c1e; }
-        .page-btn.active { background: #007aff; color: white; }
-
-        .profile-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 24px;
-            margin-bottom: 20px;
-            border: 1px solid #e5e5ea;
-        }
-        .profile-icon {
-            width: 70px;
-            height: 70px;
-            background: #e8ecf2;
-            border-radius: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 12px;
-            border: 2px solid #007aff;
-            overflow: hidden;
-        }
-        .profile-icon span { font-size: 32px; font-weight: 600; color: #007aff; }
-        .profile-name { font-size: 20px; font-weight: 600; color: #1c1c1e; }
-
-        .promo-input, .trade-input, .gift-select {
-            width: 100%;
-            padding: 12px;
-            background: #e8ecf2;
-            border: none;
-            border-radius: 14px;
-            font-size: 14px;
-            margin-bottom: 10px;
-            color: #1c1c1e;
-        }
-        .promo-input::placeholder, .trade-input::placeholder { color: #8e8e93; }
-
-        .btn-blue {
-            background: #007aff;
-            border: none;
-            border-radius: 14px;
-            padding: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            color: white;
-            width: 100%;
-            cursor: pointer;
-            margin-top: 8px;
-            transition: all 0.2s;
-        }
-        .btn-blue:active { transform: scale(0.97); }
-
-        .multiplier-btn {
-            background: #007aff;
-            border: none;
-            border-radius: 30px;
-            padding: 8px 12px;
-            color: white;
-            font-weight: 600;
-            margin: 0 4px;
-            cursor: pointer;
-        }
-        .multiplier-btn.active { background: #ffd700; color: #000; }
-
-        .friend-item {
-            background: #ffffff;
-            border-radius: 14px;
-            padding: 12px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: 1px solid #e5e5ea;
-            color: #1c1c1e;
-        }
 
         .logout-btn {
             background: #ff3b30;
@@ -370,225 +194,226 @@
             margin-top: 16px;
         }
 
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
+        /* ===== ТЁМНАЯ ТЕМА ===== */
+        @media (prefers-color-scheme: dark) {
+            body { background: #000000 !important; color: #ffffff !important; }
+            .welcome-screen { background: #000000 !important; }
+            .welcome-card { background: #1c1c1e !important; }
+            .welcome-greeting { color: #ffffff !important; }
+            .welcome-name { color: #0a84ff !important; }
+            .card { background: #1c1c1e !important; border: 1px solid #2c2c2e !important; box-shadow: none !important; }
+            .item-card { background: #1c1c1e !important; border: 1px solid #2c2c2e !important; }
+            .item-name { color: #ffffff !important; }
+            .item-price { color: #0a84ff !important; }
+            .bottom-nav { background: rgba(0, 0, 0, 0.95) !important; border-top-color: rgba(255, 255, 255, 0.1) !important; }
+            .nav-item { color: #8e8e93 !important; }
+            .nav-item.active { color: #0a84ff !important; background: rgba(0, 122, 255, 0.15) !important; }
+            .inventory-item { background: #1c1c1e !important; border: 1px solid #2c2c2e !important; }
+            .inventory-name { color: #ffffff !important; }
+            .info-row { border-bottom: 0.5px solid #38383a !important; }
+            .btn-blue { background: #0a84ff !important; }
+            .balance-card { background: linear-gradient(135deg, #0a84ff 0%, #5856d6 100%) !important; }
         }
-        .inventory-modal, .confirm-modal {
-            background: #ffffff;
-            border-radius: 32px;
-            padding: 24px;
-            width: 280px;
-            text-align: center;
-        }
-        .modal-image { width: 120px; height: 120px; background: #e8ecf2; border-radius: 20px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 48px; }
-        .modal-skin-name { font-size: 18px; font-weight: 600; margin-bottom: 20px; color: #1c1c1e; }
-        .modal-price { font-size: 20px; font-weight: 700; color: #ffd700; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 4px; }
-        .modal-buttons { display: flex; gap: 12px; }
-        .modal-btn {
-            flex: 1;
-            padding: 12px;
-            border-radius: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .modal-btn-trade { background: #1b2838; border: none; color: white; }
-        .modal-btn-sell { background: #007aff; border: none; color: white; }
-        .modal-btn-cancel { background: transparent; border: 1px solid #8e8e93; color: #8e8e93; }
-        .modal-btn-confirm { background: #007aff; border: none; color: white; }
-        .modal-btn img { width: 20px; height: 20px; }
-
-        .dropdowns-row { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        .dropdown { position: relative; flex: 1; min-width: 100px; }
-
-        .glow-legendary { box-shadow: 0 0 12px rgba(255, 215, 0, 0.6); border: 1px solid rgba(255, 215, 0, 0.3); }
-        .glow-epic { box-shadow: 0 0 12px rgba(255, 59, 48, 0.6); border: 1px solid rgba(255, 59, 48, 0.3); }
-        .glow-rare { box-shadow: 0 0 12px rgba(0, 122, 255, 0.6); border: 1px solid rgba(0, 122, 255, 0.3); }
-        .glow-common { box-shadow: 0 0 10px rgba(0, 122, 255, 0.3); border: 1px solid rgba(0, 122, 255, 0.2); }
-        .avatar-glow { box-shadow: 0 0 20px rgba(0, 122, 255, 0.8); border: 2px solid rgba(0, 122, 255, 0.5); }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <!-- Экран приветствия -->
+        <div id="welcomeScreen" class="welcome-screen">
+            <div class="welcome-card">
+                <div class="welcome-avatar"><span id="welcomeInitial">U</span></div>
+                <div class="welcome-greeting">Здравствуйте,</div>
+                <div class="welcome-name" id="welcomeName">Игрок</div>
+                <button class="welcome-btn" id="enterBtn">Начать</button>
+            </div>
+        </div>
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
+        <!-- Главное меню -->
+        <div id="mainMenu" style="display: none;">
+            <!-- Маркет -->
+            <div class="tab-content active" id="tab-market">
+                <div class="balance-card">
+                    <div class="balance-label">Баланс</div>
+                    <div class="balance-value" id="balanceValue">500 ★</div>
+                    <button class="welcome-btn" id="topupBtn" style="background: rgba(255,255,255,0.2); padding: 8px 16px; width: auto;">Купить</button>
+                </div>
+                <div class="items-grid" id="itemsGrid"></div>
+            </div>
 
-        @keyframes bannerSlideOutLeft {
-            from { opacity: 1; transform: translateX(0); }
-            to { opacity: 0; transform: translateX(-100%); }
-        }
+            <!-- Инвентарь -->
+            <div class="tab-content" id="tab-inventory">
+                <div class="card">
+                    <div class="info-row"><span class="info-label">Мои скины</span></div>
+                    <div id="inventoryList"></div>
+                </div>
+            </div>
 
-        @keyframes bannerSlideInRight {
-            from { opacity: 0; transform: translateX(100%); }
-            to { opacity: 1; transform: translateX(0); }
-        }
+            <!-- Профиль -->
+            <div class="tab-content" id="tab-profile">
+                <div class="card">
+                    <div class="info-row"><span class="info-label">Имя</span><span id="profileName">user</span></div>
+                    <div class="info-row"><span class="info-label">Скинов</span><span id="itemsOwned">0</span></div>
+                    <div class="info-row"><span class="info-label">Потрачено</span><span id="totalSpent">0 ★</span></div>
+                </div>
+                <button class="logout-btn" id="logoutBtn">Выйти</button>
+            </div>
 
-        .fade-in { animation: fadeIn 0.4s ease-out; }
-        .pulse { animation: pulse 2s infinite; }
-        .banner-exit { animation: bannerSlideOutLeft 0.3s ease forwards; }
-        .banner-enter { animation: bannerSlideInRight 0.3s ease forwards; }
+            <!-- Нижняя навигация -->
+            <div class="bottom-nav">
+                <div class="nav-item active" data-tab="market"><span class="nav-icon">🏪</span><span>Маркет</span></div>
+                <div class="nav-item" data-tab="inventory"><span class="nav-icon">📦</span><span>Инвентарь</span></div>
+                <div class="nav-item" data-tab="profile"><span class="nav-icon">👤</span><span>Профиль</span></div>
+            </div>
+        </div>
+    </div>
 
-        .banner-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            margin-bottom: 20px;
-        }
+    <script>
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function() {
+            let balance = 500;
+            let inventory = [];
+            let totalSpent = 0;
+            let currentUser = "Игрок";
 
-        .roulette-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            animation: fadeIn 0.3s;
-        }
-        .roulette-container {
-            background: #1c1c1e;
-            border-radius: 32px;
-            padding: 24px;
-            width: 340px;
-            overflow: hidden;
-            position: relative;
-        }
-        .roulette-track {
-            overflow: hidden;
-            border-radius: 20px;
-            background: #2c2c2e;
-            position: relative;
-            height: 130px;
-            margin-bottom: 20px;
-        }
-        .roulette-items {
-            display: flex;
-            gap: 12px;
-            padding: 12px;
-            transition: transform 2.5s cubic-bezier(0.2, 0.9, 0.3, 1.2);
-        }
-        .roulette-skin {
-            min-width: 90px;
-            background: #3a3a3c;
-            border-radius: 14px;
-            padding: 10px;
-            text-align: center;
-        }
-        .roulette-skin .r-image {
-            width: 70px;
-            height: 70px;
-            background: rgba(255, 215, 0, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 8px;
-        }
-        .roulette-skin .r-image span { font-size: 40px; }
-        .roulette-skin-name { font-size: 11px; font-weight: 600; margin-bottom: 4px; color: #e0e0e0; }
-        .roulette-skin-price { font-size: 11px; color: #ffd700; }
-        .pointer {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 18px solid transparent;
-            border-right: 18px solid transparent;
-            border-top: 35px solid #ffd700;
-            z-index: 10;
-        }
-        .roulette-result {
-            margin-top: 20px;
-            text-align: center;
-            background: #2c2c2e;
-            border-radius: 20px;
-            padding: 15px;
-            display: none;
-        }
-        .roulette-result-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            color: #e0e0e0;
-        }
-        .roulette-result-content .r-image {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 215, 0, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .roulette-result-content .r-image span { font-size: 28px; }
-        .close-roulette {
-            background: #007aff;
-            border: none;
-            border-radius: 14px;
-            padding: 14px;
-            color: white;
-            font-weight: 600;
-            margin-top: 16px;
-            width: 100%;
-            cursor: pointer;
-        }
+            // Загрузка сохранений
+            try {
+                const saved = localStorage.getItem('rusty_market_simple');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    balance = data.balance || 500;
+                    inventory = data.inventory || [];
+                    totalSpent = data.totalSpent || 0;
+                    currentUser = data.username || "Игрок";
+                }
+            } catch(e) {}
 
-        .sort-select {
-            background: #e8ecf2;
-            border: none;
-            border-radius: 14px;
-            padding: 6px 12px;
-            color: #1c1c1e;
-        }
+            // Скины
+            const skins = [
+                { name: "AK-47 | Золотая лихорадка", price: 1500, icon: "🔥", rarity: "legendary" },
+                { name: "Большая Медведица", price: 1200, icon: "🐻", rarity: "legendary" },
+                { name: "Лазурный дракон", price: 520, icon: "🐉", rarity: "epic" },
+                { name: "Теневой клинок", price: 450, icon: "🗡️", rarity: "epic" },
+                { name: "Кровавая луна", price: 480, icon: "🌙", rarity: "epic" },
+                { name: "Ледяное сердце", price: 280, icon: "❄️", rarity: "rare" },
+                { name: "Ржавый убийца", price: 200, icon: "🔧", rarity: "rare" },
+                { name: "Пустынный вихрь", price: 220, icon: "🏜️", rarity: "rare" },
+                { name: "Деревянный щит", price: 90, icon: "🛡️", rarity: "common" },
+                { name: "Каменный топор", price: 75, icon: "⛏️", rarity: "common" },
+                { name: "Ржавая секира", price: 60, icon: "🪓", rarity: "common" }
+            ];
 
-        /* ===== ТЁМНАЯ ТЕМА (адаптивная) ===== */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: #000000 !important;
-                color: #ffffff !important;
+            // Элементы
+            const welcomeScreen = document.getElementById('welcomeScreen');
+            const mainMenu = document.getElementById('mainMenu');
+            const enterBtn = document.getElementById('enterBtn');
+            const balanceEl = document.getElementById('balanceValue');
+            const itemsGrid = document.getElementById('itemsGrid');
+            const inventoryList = document.getElementById('inventoryList');
+            const profileName = document.getElementById('profileName');
+            const itemsOwned = document.getElementById('itemsOwned');
+            const totalSpentEl = document.getElementById('totalSpent');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const topupBtn = document.getElementById('topupBtn');
+
+            function updateUI() {
+                balanceEl.textContent = balance + ' ★';
+                profileName.textContent = currentUser;
+                itemsOwned.textContent = inventory.length;
+                totalSpentEl.textContent = totalSpent + ' ★';
+                renderInventory();
+                renderMarket();
+                saveData();
             }
 
-            .container {
-                background: #000000 !important;
+            function renderMarket() {
+                itemsGrid.innerHTML = skins.map(skin => `
+                    <div class="item-card" data-name="${skin.name}" data-price="${skin.price}" data-icon="${skin.icon}">
+                        <div class="item-image">${skin.icon}</div>
+                        <div class="item-name">${skin.name}</div>
+                        <div class="item-price">${skin.price} ★</div>
+                    </div>
+                `).join('');
+
+                document.querySelectorAll('.item-card').forEach(card => {
+                    card.addEventListener('click', function() {
+                        const name = this.dataset.name;
+                        const price = parseInt(this.dataset.price);
+                        const icon = this.dataset.icon;
+                        if (balance >= price) {
+                            balance -= price;
+                            totalSpent += price;
+                            inventory.push({ name, price, icon, date: new Date().toLocaleDateString() });
+                            updateUI();
+                            alert(`✅ Куплен ${name} за ${price}★!`);
+                        } else {
+                            alert('❌ Не хватает звёзд!');
+                        }
+                    });
+                });
             }
 
-            .welcome-screen {
-                background: #000000 !important;
+            function renderInventory() {
+                if (inventory.length === 0) {
+                    inventoryList.innerHTML = '<div style="text-align:center; padding:20px; color:#8e8e93;">Пусто</div>';
+                    return;
+                }
+                inventoryList.innerHTML = inventory.map(item => `
+                    <div class="inventory-item">
+                        <div class="inventory-icon">${item.icon}</div>
+                        <div class="inventory-info">
+                            <div class="inventory-name">${item.name}</div>
+                            <div class="inventory-date">${item.date}</div>
+                        </div>
+                        <div style="color:#007aff; font-weight:600;">${item.price} ★</div>
+                    </div>
+                `).join('');
             }
 
-            .welcome-card {
-                background: #1c1c1e !important;
+            function saveData() {
+                localStorage.setItem('rusty_market_simple', JSON.stringify({
+                    balance, inventory, totalSpent, username: currentUser
+                }));
             }
 
-            .welcome-greeting {
-                color: #ffffff !important;
-            }
+            // Переключение вкладок
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const tab = this.dataset.tab;
+                    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+                    document.getElementById('tab-' + tab).classList.add('active');
+                    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
 
-            .welcome-name {
-                color: #0a84ff !importan
+            // Вход
+            enterBtn.addEventListener('click', function() {
+                welcomeScreen.style.display = 'none';
+                mainMenu.style.display = 'block';
+                updateUI();
+            });
+
+            // Выход
+            logoutBtn.addEventListener('click', function() {
+                localStorage.removeItem('rusty_market_simple');
+                welcomeScreen.style.display = 'flex';
+                mainMenu.style.display = 'none';
+            });
+
+            // Пополнение
+            topupBtn.addEventListener('click', function() {
+                alert('💎 Пополнение баланса\nПереведите звёзды на @wasxr');
+            });
+
+            // Инициализация
+            document.getElementById('welcomeName').textContent = currentUser;
+            document.getElementById('welcomeInitial').textContent = currentUser.charAt(0).toUpperCase();
+        });
+    </script>
+</body>
+</html>
